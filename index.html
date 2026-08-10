@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Cinematográfico • Action Figures no Redmi Note 13 Pro</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --card: #181825;
+            --border: #252535;
+            --text: #e0e0e0;
+            --muted: #8888a0;
+            --accent: #f0a050;
+            --accent2: #50b8e0;
+            --danger: #e05570;
+            --green: #50d090;
+            --gradient: linear-gradient(135deg, #f0a050 0%, #e07040 50%, #c04060 100%);
+            --shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ── Hero ──────────────────────── */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 70px 24px 50px;
+            background: radial-gradient(ellipse at 50% 0%, #1a1030 0%, #0a0a0f 70%);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(240, 160, 80, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: #0a0a0f;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 5px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .hero .subtitle {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .hero .device-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ── Tab Navigation ───────────── */
+        .tab-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 4px;
+            padding: 6px 12px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+        .tab-btn {
+            flex-shrink: 0;
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid transparent;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font);
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .tab-btn:hover {
+            color: #fff;
+            background: var(--surface);
+        }
+        .tab-btn.active {
+            background: var(--card);
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(240, 160, 80, 0.15);
+        }
+
+        /* ── Main Content ─────────────── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px 80px;
+        }
+        .tab-panel {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .panel-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .panel-icon.config {
+            background: rgba(240, 160, 80, 0.15);
+        }
+        .panel-icon.angles {
+            background: rgba(80, 184, 224, 0.15);
+        }
+        .panel-icon.light {
+            background: rgba(240, 200, 80, 0.15);
+        }
+        .panel-icon.pose {
+            background: rgba(224, 85, 112, 0.15);
+        }
+        .panel-icon.effects {
+            background: rgba(160, 100, 220, 0.15);
+        }
+        .panel-icon.edit {
+            background: rgba(80, 208, 144, 0.15);
+        }
+        .panel-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* ── Cards ────────────────────── */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card p {
+            color: var(--muted);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 6px 0 6px 22px;
+            position: relative;
+            color: var(--text);
+            font-size: 0.93rem;
+        }
+        .card ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+            top: 7px;
+        }
+
+        /* ── Warning Box ──────────────── */
+        .warning {
+            background: rgba(224, 85, 112, 0.08);
+            border: 1px solid rgba(224, 85, 112, 0.3);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            margin: 20px 0;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .warning .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .warning strong {
+            color: var(--danger);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .warning p {
+            color: #d0a0a8;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* ── Tip Box ──────────────────── */
+        .tip {
+            background: rgba(80, 208, 144, 0.07);
+            border: 1px solid rgba(80, 208, 144, 0.25);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin: 16px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .tip .icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .tip p {
+            color: #a0d8b8;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* ── ASCII Diagram Block ──────── */
+        .diagram {
+            background: #0d0d18;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            line-height: 1.35;
+            color: #c0c0d0;
+            white-space: pre;
+            position: relative;
+        }
+        .diagram .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .diagram .highlight2 {
+            color: var(--accent2);
+            font-weight: 700;
+        }
+        .diagram .dim {
+            color: #555;
+        }
+        .diagram-label {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 0.65rem;
+            color: var(--muted);
+            background: var(--surface);
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-family: var(--font);
+        }
+
+        /* ── Config Grid ──────────────── */
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .config-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+        }
+        .config-item .value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .config-item .label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── EXAMPLE CARDS WITH IMAGE ─── */
+        .example-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .example-card .example-text {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .example-card .example-text h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .example-card .example-text .desc {
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-bottom: 12px;
+        }
+        .example-card .example-text .prompt-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent2);
+            margin-bottom: 4px;
+        }
+        .example-card .example-text .prompt {
+            font-size: 0.8rem;
+            color: #a0a8c0;
+            font-style: italic;
+            line-height: 1.5;
+            background: var(--surface);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            border: 1px dashed var(--border);
+        }
+        .example-card .example-img-container {
+            background: #0d0d18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            position: relative;
+            border-left: 1px solid var(--border);
+        }
+        .example-card .example-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Placeholder state */
+        .img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--muted);
+            text-align: center;
+            padding: 20px;
+        }
+        .img-placeholder .ph-icon {
+            font-size: 2.5rem;
+            opacity: 0.3;
+        }
+        .img-placeholder .ph-text {
+            font-size: 0.78rem;
+            opacity: 0.5;
+            max-width: 180px;
+        }
+        .img-placeholder .ph-id {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            background: var(--surface);
+            padding: 4px 10px;
+            border-radius: 10px;
+            opacity: 0.6;
+        }
+
+        /* ── Effects Table ────────────── */
+        .fx-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.9rem;
+        }
+        .fx-table th {
+            background: var(--surface);
+            color: var(--accent);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+        }
+        .fx-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+        .fx-table tr:hover td {
+            background: rgba(255, 255, 255, 0.015);
+        }
+        .fx-table .emoji-col {
+            font-size: 1.4rem;
+            text-align: center;
+            width: 50px;
+        }
+
+        /* ── Timeline ─────────────────── */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+        }
+        .timeline-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+            position: relative;
+        }
+        .timeline-step .time {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .timeline-step .step-title {
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .timeline-step .step-desc {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+        .timeline-step.hook {
+            border-color: var(--accent);
+        }
+        .timeline-step.climax {
+            border-color: var(--danger);
+        }
+
+        /* ── Comparison Row ───────────── */
+        .compare-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .compare-card {
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-align: center;
+        }
+        .compare-card.bad {
+            background: rgba(224, 85, 112, 0.06);
+            border: 1px solid rgba(224, 85, 112, 0.2);
+        }
+        .compare-card.good {
+            background: rgba(80, 208, 144, 0.06);
+            border: 1px solid rgba(80, 208, 144, 0.2);
+        }
+        .compare-card .verdict {
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        .bad .verdict {
+            color: var(--danger);
+        }
+        .good .verdict {
+            color: var(--green);
+        }
+
+        /* ── Section divider ──────────── */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 32px 0 18px;
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Footer ───────────────────── */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* ── Responsive ──────────────── */
+        @media (max-width: 700px) {
+            .tab-btn {
+                padding: 8px 13px;
+                font-size: 0.78rem;
+            }
+            .compare-row,
+            .timeline {
+                grid-template-columns: 1fr 1fr;
+            }
+            .config-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .diagram {
+                font-size: 0.62rem;
+            }
+            .example-card {
+                grid-template-columns: 1fr;
+            }
+            .example-card .example-img-container {
+                border-left: none;
+                border-top: 1px solid var(--border);
+                min-height: 220px;
+            }
+        }
+        @media (max-width: 420px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            .config-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero">
+        <span class="badge">Guia Definitivo</span>
+        <h1>Action Figures Cinematográficas</h1>
+        <p class="subtitle">Tudo que você precisa para extrair o máximo do sensor de 200 MP com OIS do Redmi Note 13 Pro e criar conteúdo profissional para o nicho.</p>
+        <div class="device-tag">📱 Redmi Note 13 Pro • HyperOS • Sensor Principal 1X</div>
+    </section>
+
+    <!-- ═══════════ TAB NAVIGATION ═══════════ -->
+    <nav class="tab-nav" id="tabNav">
+        <button class="tab-btn active" data-tab="config">⚙️ Configurações</button>
+        <button class="tab-btn" data-tab="angles">📐 Ângulos</button>
+        <button class="tab-btn" data-tab="lighting">💡 Iluminação</button>
+        <button class="tab-btn" data-tab="poses">🎯 Poses</button>
+        <button class="tab-btn" data-tab="effects">✨ Efeitos</button>
+        <button class="tab-btn" data-tab="editing">🎬 Edição</button>
+    </nav>
+
+    <!-- ═══════════ CONTENT ═══════════ -->
+    <main class="container">
+
+        <!-- ── TAB 1: CONFIGURAÇÕES ── -->
+        <section class="tab-panel active" id="config">
+            <div class="panel-header">
+                <div class="panel-icon config">⚙️</div>
+                <h2>1. Configurações Decisivas</h2>
+            </div>
+
+            <div class="card">
+                <h3>🔑 Regras de Ouro antes de ligar as luzes</h3>
+                <ul>
+                    <li><strong>Esqueça o Modo 200MP para vídeos:</strong> ele é só para fotos. Use o <strong>Modo Vídeo Padrão</strong>.</li>
+                    <li><strong>Resolução:</strong> 4K a 30 FPS (cena estática/nitidez máxima) ou 1080p a 60 FPS (slow motion na edição).</li>
+                    <li><strong>Lente:</strong> sempre a <strong>Principal 1X</strong>. Evite a Ultra-wide e jamais use a Macro de 2 MP.</li>
+                </ul>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Menu do Modo Pro</span>
+                ┌──────────────────────────────────────────────────────────┐
+                │ <span class="highlight">WB: 4800K</span>  │ Foco: [<span class="highlight2">|||||||||..</span>] (Peaking) │ <span class="highlight">ISO: 100</span>   │
+                ├──────────────────────────────────────────────────────────┤
+                │ [ <span class="highlight">LENTE PRINCIPAL 1X</span> ] - Evite a Ultra-wide / Macro      │
+                └──────────────────────────────────────────────────────────┘
+            </div>
+
+            <div class="config-grid">
+                <div class="config-item">
+                    <div class="value">MF</div>
+                    <div class="label">Foco Manual</div>
+                </div>
+                <div class="config-item">
+                    <div class="value">50–100</div>
+                    <div class="label">ISO Travado</div>
+                </div>
+                <div class="config-item">
+                    <div class="value">4800K</div>
+                    <div class="label">Balanço de Brancos</div>
+                </div>
+                <div class="config-item">
+                    <div class="value">1X / 2X</div>
+                    <div class="label">Zoom Digital Limpo</div>
+                </div>
+            </div>
+
+            <div class="warning">
+                <span class="icon">⚠️</span>
+                <div>
+                    <strong>Não use a lente Macro de 2 MP!</strong>
+                    <p>Ela tem baixíssima qualidade. No lugar dela, use a câmera principal (1X) com zoom digital de 2X. O sensor de 200 MP mantém nitidez excelente no crop e ainda entrega bokeh natural.</p>
+                </div>
+            </div>
+
+            <div class="tip">
+                <span class="icon">💡</span>
+                <p><strong>Focus Peaking:</strong> aquelas linhas vermelhas/azuis que aparecem na tela no modo Pro. Use-as para garantir que o rosto do action figure está 100% no foco antes de gravar.</p>
+            </div>
+        </section>
+
+        <!-- ── TAB 2: ÂNGULOS ── -->
+        <section class="tab-panel" id="angles">
+            <div class="panel-header">
+                <div class="panel-icon angles">📐</div>
+                <h2>2. Ângulos & Movimentos de Câmera</h2>
+            </div>
+
+            <!-- A) Low-Angle Shot -->
+            <div class="card">
+                <h3>🐛 A) Ângulo do Verme (Low-Angle Shot)</h3>
+                <p>Vire o Redmi <strong>de cabeça para baixo</strong> e encoste a lente no chão. Isso gera uma perspectiva gigantesca — como se a câmera fosse do tamanho do personagem. Incline ~30° para cima.</p>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Low-Angle Setup</span>
+                           [ LUZ DA LUA / TETO ]
+                                    │
+                                    ▼
+                                 <span class="highlight">O</span>  ← Cabeça da figura
+                                /|\
+                                 │
+                                / \  ← Pés no nível do chão
+             ──────────────────────────────────────── (Chão)
+                 /
+                / [ <span class="highlight2">CÂMERA DO CELULAR</span> ]  (Inclinada ~30° para cima)
+               [o]
+            </div>
+
+            <!-- Exemplo 1: Gigante -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🧊 Exemplo 1: Perspectiva de Gigante</h4>
+                    <p class="desc">O action figure parecerá uma criatura colossal de 20 metros no topo de um prédio.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Low-angle cinematic shot of a realistic action figure standing on a miniature rooftop, giant scale illusion, worm eye view, dramatic upward perspective, volumetric lighting, photorealistic, 8k resolution --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-angle-giant">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-angle-giant</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Ameaçadora -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>😈 Exemplo 2: Presença Ameaçadora</h4>
+                    <p class="desc">O vilão encara a câmera de baixo para cima, com olhar sombrio e iluminação recortada.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Low angle shot of a dark anime action figure looking down at the camera, villain presence, dramatic shadow casting on face, cinematic anime aesthetics, cinematic lighting, hyper-realistic --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-angle-villain">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-angle-villain</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B) Efeito Parallax -->
+            <div class="card">
+                <h3>🎥 B) Efeito Parallax (Profundidade Dinâmica)</h3>
+                <p>Coloque pequenos objetos no primeiro plano para gerar profundidade de campo. A OIS do Note 13 Pro é ótima para deslizar o celular suavemente na horizontal.</p>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Parallax em Movimento</span>
+             [ FUNDO ESCURO ]      ─────▶ Move <span class="dim">devagar</span>
+
+                 [ <span class="highlight">FIGURA</span> ]        ─────▶ Move em velocidade média
+
+              ▲ [PEDRA NO CHÃO]    ─────▶ Move <span class="highlight2">rápido</span> na frente da lente!
+
+                 [ 📱 CÂMERA ]  ➔ ➔ ➔  (Deslize suave para o lado)
+            </div>
+
+            <!-- Exemplo 1: Desfoque Primeiro Plano -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🪨 Exemplo 1: Desfoque de Primeiro Plano</h4>
+                    <p class="desc">Rochas desfocadas passando muito rápido perto da lente enquanto a figura permanece nítida.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Cinematic parallax effect photo, realistic action figure in center focus, blurred rocks and debris extremely close to foreground lens, motion blur, deep depth of field, high contrast, 8k --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-parallax-rocks">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-parallax-rocks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Campo de Batalha -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🔥 Exemplo 2: Profundidade em Campo de Batalha</h4>
+                    <p class="desc">Elementos de fogo e destruição em camadas (frente, meio e fundo) gerando sensação 3D.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Cinematic parallax frame, foreground blurred embers, midground sharp hero action figure, background distant blurred explosions, layered cinematic depth, movie screenshot quality --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-parallax-battle">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-parallax-battle</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TAB 3: ILUMINAÇÃO ── -->
+        <section class="tab-panel" id="lighting">
+            <div class="panel-header">
+                <div class="panel-icon light">💡</div>
+                <h2>3. Iluminação Cinematográfica</h2>
+            </div>
+
+            <!-- A) Rim Light -->
+            <div class="card">
+                <h3>🔦 A) Rim Light (Luz de Contorno) + Luz Principal</h3>
+                <p>A luz traseira cria silhueta clássica de animes e destaca bordas da pintura. O sensor lida bem com a dinâmica se o ISO estiver travado baixo.</p>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Rim Light Setup</span>
+                           [ <span class="highlight2">LUZ DE CONTORNO</span> ] (Atrás/Lateral - Mais Forte)
+                                    \
+                                     \
+                        [ FUNDO ]    ( <span class="highlight">O</span> )  ← FIGURA
+                                      /|
+                                     / |
+                                    /  [ <span class="highlight">LUZ PRINCIPAL</span> ] (Frente/Suave - Lado Oposto)
+                                   /
+                             [ 📱 CÂMERA ]
+            </div>
+
+            <!-- Exemplo 1: Borda Anime -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>✨ Exemplo 1: Separação de Borda Estilo Anime</h4>
+                    <p class="desc">Linha brilhante traçando ombros, cabelo e escultura da figura contra fundo escuro.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Cinematic photo of action figure, strong rim lighting outline on hair and shoulders, dark moody background, soft fill light on front, dramatic contrast, unreal engine 5 render look --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-rim-anime">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-rim-anime</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Silhueta Parcial -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🌑 Exemplo 2: Silhueta Parcial Épica</h4>
+                    <p class="desc">Figura quase toda no escuro, revelando apenas os contornos do corpo e o olhar.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Chiaroscuro lighting on action figure, edge rim light highlighting the silhouette, dramatic dark mood, mystery aesthetic, rim light outline, movie poster style --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-rim-silhouette">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-rim-silhouette</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B) Teal & Orange -->
+            <div class="card">
+                <h3>🎨 B) Esquema Neons / Contraste de Cores (Teal & Orange)</h3>
+                <p>Use dois LEDs com cores opostas. O Redmi Note 13 Pro lida incrivelmente bem com saturação dessas luzes se a exposição estiver um pouco reduzida.</p>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Complementary Colors</span>
+             (🔵 LUZ AZUL)  ===▶   [ <span class="highlight">FIGURA</span> ]   ◀===  (🔴 LUZ VERMELHA)
+                                        │
+                                 [ 📱 CÂMERA ]
+            </div>
+
+            <!-- Exemplo 1: Duelo Elemental -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>⚔️ Exemplo 1: Duelo Elemental</h4>
+                    <p class="desc">Metade do corpo em tom azul-frio, a outra metade em vermelho-fogo.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Dual tone color lighting on action figure, strong cyan light from left, fiery red orange light from right, split lighting contrast, epic anime battle visual style, high saturation --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-color-duel">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-color-duel</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Cyberpunk -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🌃 Exemplo 2: Estilo Cyberpunk / Neon Urban</h4>
+                    <p class="desc">Reflexos coloridos intensos sobre armadura ou roupas plásticas da figura.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Cyberpunk style lighting on action figure, neon blue and magenta rim lights, specular highlights on plastic armor, dark rain background, cinematic night shot --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-color-cyberpunk">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-color-cyberpunk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TAB 4: POSES ── -->
+        <section class="tab-panel" id="poses">
+            <div class="panel-header">
+                <div class="panel-icon pose">🎯</div>
+                <h2>4. Poses & Composição</h2>
+            </div>
+
+            <!-- A) Linha de Ação Diagonal -->
+            <div class="card">
+                <h3>📐 A) A Linha de Ação Diagonal</h3>
+                <p>Mantenha membros em ângulos cruzados para forçar o sensor a capturar perspectiva e relevo. Evite o "efeito maquete" da figura reta.</p>
+            </div>
+
+            <div class="compare-row">
+                <div class="compare-card bad">
+                    <div class="verdict">❌ ESTRUTURA RÍGIDA</div>
+                    <p style="font-family:monospace;font-size:0.85rem;">&nbsp;&nbsp;(O)<br>&nbsp;&nbsp;&nbsp;|<br>&nbsp;&nbsp;/&nbsp;\</p>
+                    <p style="font-size:0.8rem;color:var(--muted);">Achata a cena</p>
+                </div>
+                <div class="compare-card good">
+                    <div class="verdict">✅ ESTRUTURA DIAGONAL</div>
+                    <p style="font-family:monospace;font-size:0.85rem;">&nbsp;&nbsp;&nbsp;&nbsp;(O)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;\<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;\</p>
+                    <p style="font-size:0.8rem;color:var(--muted);">Dinâmica e cinematográfica</p>
+                </div>
+            </div>
+
+            <!-- Exemplo 1: Aterrissagem -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🦸 Exemplo 1: Aterrissagem de Impacto</h4>
+                    <p class="desc">Personagem agachado com corpo inclinado na diagonal, pronto para saltar.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Dynamic anime pose action figure, superhero landing pose, diagonal line of action, body tilted forward, tension and energy, wide stance, cinematic photography --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-pose-landing">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-pose-landing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Ataque -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>💥 Exemplo 2: Ataque em Movimento</h4>
+                    <p class="desc">Torso girado e inclinado para o lado enquanto prepara um golpe.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Dynamic combat pose action figure, diagonal body axis, mid-attack posture, sense of speed and momentum, dark dramatic studio lighting, 8k --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-pose-attack">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-pose-attack</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B) Escorço -->
+            <div class="card">
+                <h3>👊 B) Escorço (Foreshortening)</h3>
+                <p>Aponte o punho, espada ou poder do personagem <strong>direto para a lente</strong>. O algoritmo cria desfoque óptico natural no corpo, focando só no item da frente.</p>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Foreshortening</span>
+                [ <span class="highlight">ESPADA / MÃO</span> ]  ← (<span class="highlight2">Muito perto da câmera = Enorme</span>)
+                      \
+                       \
+                        (<span class="dim">O</span>)       ← Cabeça menor ao fundo = Profundidade
+                        / \
+            </div>
+
+            <!-- Exemplo 1: Espada -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🗡️ Exemplo 1: Golpe de Espada em Direção à Tela</h4>
+                    <p class="desc">A ponta da espada gigantesca na frente com o personagem menor ao fundo.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Extreme foreshortening angle, action figure pointing sword directly at the camera, giant sword blade foreground, shallow depth of field, anime manga dynamic perspective --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-pose-sword">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-pose-sword</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Soco -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🥊 Exemplo 2: Soco na Câmera</h4>
+                    <p class="desc">O punho enorme no primeiro plano, cobrindo parte da imagem com desfoque de profundidade.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Action figure punching toward the lens, huge fist in sharp foreground focus, body small in background, perspective distortion, dramatic manga fight scene framing --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-pose-punch">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-pose-punch</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── TAB 5: EFEITOS ── -->
+        <section class="tab-panel" id="effects">
+            <div class="panel-header">
+                <div class="panel-icon effects">✨</div>
+                <h2>5. Efeitos Práticos (VFX Físicos)</h2>
+            </div>
+
+            <div class="card">
+                <h3>🧪 Partículas Reais no Ar</h3>
+                <p>O sensor do Redmi tem ótima nitidez em áreas iluminadas. Aproveite para criar efeitos reais sem pós-produção.</p>
+            </div>
+
+            <table class="fx-table">
+                <thead>
+                    <tr>
+                        <th class="emoji-col"></th>
+                        <th>Efeito</th>
+                        <th>Como Fazer</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="emoji-col">💨</td>
+                        <td><strong>Fumaça Volumétrica</strong></td>
+                        <td>Vaporizador, incenso ou vape soprado de lado</td>
+                        <td>Feixes de luz dramáticos no vídeo</td>
+                    </tr>
+                    <tr>
+                        <td class="emoji-col">✨</td>
+                        <td><strong>Partículas de Poeira</strong></td>
+                        <td>Amido de milho ou canela jogados perto da luz</td>
+                        <td>Pontos brancos reluzentes (efeito faísca)</td>
+                    </tr>
+                    <tr>
+                        <td class="emoji-col">🌬️</td>
+                        <td><strong>Vento de Batalha</strong></td>
+                        <td>Secador de cabelo no modo frio apontado na lateral</td>
+                        <td>Movimento fluido em tecidos e cabelos</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <span class="icon">🔑</span>
+                <p><strong>Dica de ouro:</strong> sempre ilumine a fumaça/poeira com uma luz lateral. Sem iluminação dedicada, as partículas somem no escuro.</p>
+            </div>
+        </section>
+
+        <!-- ── TAB 6: EDIÇÃO ── -->
+        <section class="tab-panel" id="editing">
+            <div class="panel-header">
+                <div class="panel-icon edit">🎬</div>
+                <h2>6. Edição & Estrutura do Reels</h2>
+            </div>
+
+            <div class="card">
+                <h3>⏱️ Ritmo de Corte (Fluxo para Reels)</h3>
+                <p>Estruture seus vídeos com progressão de impacto. O segredo é <strong>variar a velocidade</strong>.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-step hook">
+                    <div class="time">0.0s – 1.5s</div>
+                    <div class="step-title">🎣 HOOK</div>
+                    <div class="step-desc">Slow-mo + Bass drop. Impacto imediato.</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="time">1.5s – 3.0s</div>
+                    <div class="step-title">📷 Take Aberto</div>
+                    <div class="step-desc">Pan rápido mostrando o cenário.</div>
+                </div>
+                <div class="timeline-step">
+                    <div class="time">3.0s – 5.0s</div>
+                    <div class="step-title">🔍 Close-up</div>
+                    <div class="step-desc">Detalhe com luz piscando.</div>
+                </div>
+                <div class="timeline-step climax">
+                    <div class="time">5.0s – 8.0s</div>
+                    <div class="step-title">⚡ Clímax</div>
+                    <div class="step-desc">Posição final épica no beat.</div>
+                </div>
+            </div>
+
+            <!-- Exemplo 1: Hook -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>👁️ Exemplo 1: Hook Inicial (0.0s – 1.5s)</h4>
+                    <p class="desc">Close-up extremo nos olhos ou detalhe iluminado do personagem piscando em luzes rápidas.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Macro close-up shot of action figure helmet eye glowing, high tension lighting, fast motion blur feel, teaser video thumbnail style --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-edit-hook">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-edit-hook</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 2: Clímax -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🎬 Exemplo 2: Revelação Épica do Clímax (5.0s – 8.0s)</h4>
+                    <p class="desc">Cena completa revelada com fumaça, luzes de contorno e enquadramento de pôster de filme.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Full body hero shot of action figure standing in smoke, movie poster composition, volumetric light rays, color graded cinematic finish, masterpiece --ar 9:16</span>
+                </div>
+                <div class="example-img-container" id="img-edit-climax">
+                    <div class="img-placeholder">
+                        <span class="ph-icon">🖼️</span>
+                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
+                        <span class="ph-id">img-edit-climax</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🎨 Color Grading</h3>
+                <ul>
+                    <li><strong>Contraste:</strong> +10</li>
+                    <li><strong>Sombras:</strong> -15 (esconde o fundo do ambiente)</li>
+                    <li><strong>Nitidez:</strong> +5 (realça texturas da pintura)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>⚡ Speed Ramping</h3>
+                <p>Interpole partes rápidas a <strong>2x</strong> e diminua abruptamente para <strong>0.3x (Slow Motion)</strong> bem na batida da música ou no golpe do personagem. Esse contraste de velocidade é o que viraliza.</p>
+            </div>
+
+            <div class="tip">
+                <span class="icon">📱</span>
+                <p><strong>Exporte em:</strong> 1080p a 60 FPS para o Reels não comprimir demais. Se o projeto tiver slow-motion, 4K a 30 FPS como master também funciona bem no CapCut/Premiere/DaVinci.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        Guia Cinematográfico para Redmi Note 13 Pro · Criado para o nicho de Action Figures<br>
+        <span style="opacity:0.5;">As imagens placeholder devem ser geradas na aba <strong>Imagens</strong> do MyHUB.IA e substituídas pelos arquivos reais</span>
+    </footer>
+
+    <script>
+        // Tab switching
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.tab;
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabPanels.forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                const panel = document.getElementById(targetId);
+                if (panel) panel.classList.add('active');
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const allBtns = [...tabButtons];
+                const idx = allBtns.indexOf(activeBtn);
+                const next = e.key === 'ArrowRight'
+                    ? (idx + 1) % allBtns.length
+                    : (idx - 1 + allBtns.length) % allBtns.length;
+                allBtns[next].click();
+            }
+        });
+    </script>
+</body>
+</html>
