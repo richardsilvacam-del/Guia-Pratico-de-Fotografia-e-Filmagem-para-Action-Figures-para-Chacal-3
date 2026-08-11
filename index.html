@@ -189,6 +189,7 @@
             font-size: 1.4rem;
             flex-shrink: 0;
         }
+        .panel-icon.setup { background: rgba(80, 184, 224, 0.15); }
         .panel-icon.config { background: rgba(240, 160, 80, 0.15); }
         .panel-icon.angles { background: rgba(80, 184, 224, 0.15); }
         .panel-icon.light { background: rgba(240, 200, 80, 0.15); }
@@ -628,7 +629,8 @@
 
     <!-- ═══════════ TAB NAVIGATION ═══════════ -->
     <nav class="tab-nav" id="tabNav">
-        <button class="tab-btn active" data-tab="config">⚙️ Configurações</button>
+        <button class="tab-btn active" data-tab="setup">🛠️ Setup</button>
+        <button class="tab-btn" data-tab="config">⚙️ Configurações</button>
         <button class="tab-btn" data-tab="angles">📐 Ângulos</button>
         <button class="tab-btn" data-tab="lighting">💡 Iluminação</button>
         <button class="tab-btn" data-tab="poses">🎯 Poses</button>
@@ -645,8 +647,113 @@
     <!-- ═══════════ CONTENT ═══════════ -->
     <main class="container">
 
+        <!-- ── TAB 0: SETUP ── -->
+        <section class="tab-panel active" id="setup">
+            <div class="panel-header">
+                <div class="panel-icon setup">🛠️</div>
+                <h2>0. Setup do Estúdio</h2>
+            </div>
+
+            <div class="card">
+                <h3>🏠 Monte seu espaço de gravação</h3>
+                <p>Antes de ligar a câmera, o ambiente precisa estar pronto. Um bom setup economiza horas de edição e eleva a qualidade do canal inteiro.</p>
+                <ul>
+                    <li><strong>Mesa limpa e estável:</strong> use uma mesa sem reflexos indesejados ou use um tapete preto/tecido fosco como fundo.</li>
+                    <li><strong>Espaço mínimo:</strong> 60 cm entre a figura e o fundo para conseguir separação de luz e evitar sombras duras.</li>
+                    <li><strong>Controle a luz ambiente:</strong> feche cortinas, apague luzes de teto e trabalhe em ambiente escuro. Quanto mais escuro, mais controle você tem.</li>
+                </ul>
+            </div>
+
+            <div class="diagram">
+                <span class="diagram-label">Layout do Estúdio</span>
+                         [ LUZ AMBIENTE: APAGADA ]
+                                    │
+                    [ LUZ LATERAL ]   [ LUZ LATERAL ]
+                            \         /
+                             \       /
+                              \     /
+                            [ <span class="highlight">FIGURA</span> ]
+                                  │
+                            [ 📱 CÂMERA ]
+                                  │
+                         [ MESA + FUNDO PRETO ]
+            </div>
+
+            <div class="card">
+                <h3>📱 Posicionamento do Redmi Note 13 Pro</h3>
+                <p>Coloque o celular em um tripé ou apoio estável na altura do peito da figura. Evite segurar na mão — a OIS ajuda, mas estabilidade física é insubstituível.</p>
+                <ul>
+                    <li><strong>Altura da lente:</strong> na altura dos olhos da figura para ângulo natural e imersivo.</li>
+                    <li><strong>Distância inicial:</strong> 20–40 cm da figura, dependendo do tamanho e do enquadramento desejado.</li>
+                    <li><strong>Modo avião ativado:</strong> evita notificações, vibrações e quedas de performance durante a gravação.</li>
+                </ul>
+            </div>
+
+            <div class="config-grid">
+                <div class="config-item"><div class="value">Escuro</div><div class="label">Ambiente</div></div>
+                <div class="config-item"><div class="value">Tripé</div><div class="label">Estabilização</div></div>
+                <div class="config-item"><div class="value">60 cm</div><div class="label">Fundo da figura</div></div>
+                <div class="config-item"><div class="value">Avião</div><div class="label">Modo celular</div></div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🔄 Exemplo: Antes e Depois do Setup</h4>
+                    <p class="desc">Esquerda: ambiente com luz de teto, celular na mão e fundo bagunçado. Direita: ambiente controlado, tripé e fundo limpo.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Side by side comparison of a toy photography studio setup, left messy room with ceiling light and phone in hand, right clean dark studio with tripod, black backdrop and two LED lights, infographic style --ar 16:9</span>
+                </div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="setup-antes.jpg">
+                        <img src="setup-antes.jpg" alt="Setup antes - ambiente bagunçado">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                    <div class="img-slot" data-src="setup-depois.jpg">
+                        <img src="setup-depois.jpg" alt="Setup depois - estúdio organizado">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">Iluminação base</div>
+
+            <div class="card">
+                <h3>💡 Luz básica para começar</h3>
+                <p>Você não precisa de equipamento caro. Comece com o que tem e evolua. Aqui estão três opções de setup:</p>
+                <ul>
+                    <li><strong>Setup 1 — Luz natural + rebatedor:</strong> use uma janela como luz principal e um papel branco para suavizar sombras. Ótimo para fotos, ruim para vídeos noturnos.</li>
+                    <li><strong>Setup 2 — Duas lâmpadas LED:</strong> uma à frente/suave e outra atrás como rim light. Controle total de horário.</li>
+                    <li><strong>Setup 3 — Ring light + gelatina colorida:</strong> luz frontal uniforme com toques de cor no fundo. Ideal para estética anime/cyber.</li>
+                </ul>
+            </div>
+
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🌑 Exemplo: Iluminação Antes/Depois</h4>
+                    <p class="desc">Mesma figura, mesmo ângulo. A diferença está na direção e temperatura da luz.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Before and after lighting comparison of action figure photography, left flat overhead room light, right dramatic two-point LED lighting with rim light, cinematic quality --ar 16:9</span>
+                </div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="light-antes.jpg">
+                        <img src="light-antes.jpg" alt="Iluminação antes - luz plana">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                    <div class="img-slot" data-src="light-depois.jpg">
+                        <img src="light-depois.jpg" alt="Iluminação depois - luz dramática">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <span class="icon">✅</span>
+                <p><strong>Checklist rápido antes de gravar:</strong> ambiente escuro, celular no tripé, modo avião, lentes limpas, bateria acima de 50%, e memória livre suficiente para gravar em 4K.</p>
+            </div>
+        </section>
+
         <!-- ── TAB 1: CONFIGURAÇÕES ── -->
-        <section class="tab-panel active" id="config">
+        <section class="tab-panel" id="config">
             <div class="panel-header">
                 <div class="panel-icon config">⚙️</div>
                 <h2>1. Configurações Decisivas</h2>
