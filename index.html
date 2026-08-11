@@ -189,24 +189,12 @@
             font-size: 1.4rem;
             flex-shrink: 0;
         }
-        .panel-icon.config {
-            background: rgba(240, 160, 80, 0.15);
-        }
-        .panel-icon.angles {
-            background: rgba(80, 184, 224, 0.15);
-        }
-        .panel-icon.light {
-            background: rgba(240, 200, 80, 0.15);
-        }
-        .panel-icon.pose {
-            background: rgba(224, 85, 112, 0.15);
-        }
-        .panel-icon.effects {
-            background: rgba(160, 100, 220, 0.15);
-        }
-        .panel-icon.edit {
-            background: rgba(80, 208, 144, 0.15);
-        }
+        .panel-icon.config { background: rgba(240, 160, 80, 0.15); }
+        .panel-icon.angles { background: rgba(80, 184, 224, 0.15); }
+        .panel-icon.light { background: rgba(240, 200, 80, 0.15); }
+        .panel-icon.pose { background: rgba(224, 85, 112, 0.15); }
+        .panel-icon.effects { background: rgba(160, 100, 220, 0.15); }
+        .panel-icon.edit { background: rgba(80, 208, 144, 0.15); }
         .panel-header h2 {
             font-size: 1.5rem;
             font-weight: 700;
@@ -315,17 +303,9 @@
             white-space: pre;
             position: relative;
         }
-        .diagram .highlight {
-            color: var(--accent);
-            font-weight: 700;
-        }
-        .diagram .highlight2 {
-            color: var(--accent2);
-            font-weight: 700;
-        }
-        .diagram .dim {
-            color: #555;
-        }
+        .diagram .highlight { color: var(--accent); font-weight: 700; }
+        .diagram .highlight2 { color: var(--accent2); font-weight: 700; }
+        .diagram .dim { color: #555; }
         .diagram-label {
             position: absolute;
             top: 10px;
@@ -365,7 +345,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ── EXAMPLE CARDS WITH IMAGE ─── */
+        /* ── EXAMPLE CARDS WITH IMAGES ─── */
         .example-card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -373,15 +353,9 @@
             overflow: hidden;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
         }
         .example-card .example-text {
             padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         .example-card .example-text h4 {
             font-size: 1rem;
@@ -410,47 +384,39 @@
             border-radius: var(--radius-sm);
             border: 1px dashed var(--border);
         }
-        .example-card .example-img-container {
+
+        /* ── Image Pair (BTS + Result) ── */
+        .image-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-top: 1px solid var(--border);
             background: #0d0d18;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 280px;
+        }
+        .image-pair .img-box {
             position: relative;
-            border-left: 1px solid var(--border);
-        }
-        .example-card .example-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        /* Placeholder state */
-        .img-placeholder {
+            min-height: 260px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: var(--muted);
-            text-align: center;
-            padding: 20px;
         }
-        .img-placeholder .ph-icon {
-            font-size: 2.5rem;
-            opacity: 0.3;
+        .image-pair .img-box:first-child {
+            border-right: 1px solid var(--border);
         }
-        .img-placeholder .ph-text {
-            font-size: 0.78rem;
-            opacity: 0.5;
-            max-width: 180px;
+        .image-pair .img-box img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
         }
-        .img-placeholder .ph-id {
-            font-family: var(--mono);
-            font-size: 0.65rem;
+        .image-pair .img-label {
             background: var(--surface);
-            padding: 4px 10px;
-            border-radius: 10px;
-            opacity: 0.6;
+            color: var(--muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px;
+            text-align: center;
+            border-top: 1px solid var(--border);
         }
 
         /* ── Effects Table ────────────── */
@@ -514,12 +480,8 @@
             font-size: 0.78rem;
             color: var(--muted);
         }
-        .timeline-step.hook {
-            border-color: var(--accent);
-        }
-        .timeline-step.climax {
-            border-color: var(--danger);
-        }
+        .timeline-step.hook { border-color: var(--accent); }
+        .timeline-step.climax { border-color: var(--danger); }
 
         /* ── Comparison Row ───────────── */
         .compare-row {
@@ -546,12 +508,8 @@
             font-size: 0.85rem;
             margin-bottom: 8px;
         }
-        .bad .verdict {
-            color: var(--danger);
-        }
-        .good .verdict {
-            color: var(--green);
-        }
+        .bad .verdict { color: var(--danger); }
+        .good .verdict { color: var(--green); }
 
         /* ── Section divider ──────────── */
         .section-divider {
@@ -587,32 +545,24 @@
                 padding: 8px 13px;
                 font-size: 0.78rem;
             }
-            .compare-row,
-            .timeline {
+            .compare-row, .timeline {
                 grid-template-columns: 1fr 1fr;
             }
             .config-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .diagram {
-                font-size: 0.62rem;
-            }
-            .example-card {
+            .diagram { font-size: 0.62rem; }
+            .image-pair {
                 grid-template-columns: 1fr;
             }
-            .example-card .example-img-container {
-                border-left: none;
-                border-top: 1px solid var(--border);
-                min-height: 220px;
+            .image-pair .img-box:first-child {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
             }
         }
         @media (max-width: 420px) {
-            .timeline {
-                grid-template-columns: 1fr;
-            }
-            .config-grid {
-                grid-template-columns: 1fr;
-            }
+            .timeline { grid-template-columns: 1fr; }
+            .config-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -665,22 +615,10 @@
             </div>
 
             <div class="config-grid">
-                <div class="config-item">
-                    <div class="value">MF</div>
-                    <div class="label">Foco Manual</div>
-                </div>
-                <div class="config-item">
-                    <div class="value">50–100</div>
-                    <div class="label">ISO Travado</div>
-                </div>
-                <div class="config-item">
-                    <div class="value">4800K</div>
-                    <div class="label">Balanço de Brancos</div>
-                </div>
-                <div class="config-item">
-                    <div class="value">1X / 2X</div>
-                    <div class="label">Zoom Digital Limpo</div>
-                </div>
+                <div class="config-item"><div class="value">MF</div><div class="label">Foco Manual</div></div>
+                <div class="config-item"><div class="value">50–100</div><div class="label">ISO Travado</div></div>
+                <div class="config-item"><div class="value">4800K</div><div class="label">Balanço de Brancos</div></div>
+                <div class="config-item"><div class="value">1X / 2X</div><div class="label">Zoom Digital Limpo</div></div>
             </div>
 
             <div class="warning">
@@ -728,33 +666,19 @@
             <!-- Exemplo 1: Gigante -->
             <div class="example-card">
                 <div class="example-text">
-                    <h4>🧊 Exemplo 1: Perspectiva de Gigante</h4>
+                    <h4>🧊 Exemplo: Perspectiva de Gigante</h4>
                     <p class="desc">O action figure parecerá uma criatura colossal de 20 metros no topo de um prédio.</p>
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Low-angle cinematic shot of a realistic action figure standing on a miniature rooftop, giant scale illusion, worm eye view, dramatic upward perspective, volumetric lighting, photorealistic, 8k resolution --ar 9:16</span>
                 </div>
-                <div class="example-img-container" id="img-angle-giant">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-angle-giant</span>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="angle-giant-bts.jpg" alt="Bastidores perspectiva de gigante">
+                        <div class="img-label">Bastidores</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 2: Ameaçadora -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>😈 Exemplo 2: Presença Ameaçadora</h4>
-                    <p class="desc">O vilão encara a câmera de baixo para cima, com olhar sombrio e iluminação recortada.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Low angle shot of a dark anime action figure looking down at the camera, villain presence, dramatic shadow casting on face, cinematic anime aesthetics, cinematic lighting, hyper-realistic --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-angle-villain">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-angle-villain</span>
+                    <div class="img-box">
+                        <img src="angle-giant-result.jpg" alt="Resultado perspectiva de gigante">
+                        <div class="img-label">Resultado Final</div>
                     </div>
                 </div>
             </div>
@@ -776,36 +700,22 @@
                  [ 📱 CÂMERA ]  ➔ ➔ ➔  (Deslize suave para o lado)
             </div>
 
-            <!-- Exemplo 1: Desfoque Primeiro Plano -->
+            <!-- Exemplo 2: Parallax -->
             <div class="example-card">
                 <div class="example-text">
-                    <h4>🪨 Exemplo 1: Desfoque de Primeiro Plano</h4>
-                    <p class="desc">Rochas desfocadas passando muito rápido perto da lente enquanto a figura permanece nítida.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Cinematic parallax effect photo, realistic action figure in center focus, blurred rocks and debris extremely close to foreground lens, motion blur, deep depth of field, high contrast, 8k --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-parallax-rocks">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-parallax-rocks</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 2: Campo de Batalha -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🔥 Exemplo 2: Profundidade em Campo de Batalha</h4>
-                    <p class="desc">Elementos de fogo e destruição em camadas (frente, meio e fundo) gerando sensação 3D.</p>
+                    <h4>🪨 Exemplo: Profundidade em Parallax</h4>
+                    <p class="desc">Elementos em camadas (frente, meio e fundo) gerando sensação 3D cinemática.</p>
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Cinematic parallax frame, foreground blurred embers, midground sharp hero action figure, background distant blurred explosions, layered cinematic depth, movie screenshot quality --ar 9:16</span>
                 </div>
-                <div class="example-img-container" id="img-parallax-battle">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-parallax-battle</span>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="parallax-bts.jpg" alt="Bastidores parallax">
+                        <div class="img-label">Bastidores</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="parallax-result.jpg" alt="Resultado parallax">
+                        <div class="img-label">Resultado Final</div>
                     </div>
                 </div>
             </div>
@@ -837,43 +747,29 @@
                              [ 📱 CÂMERA ]
             </div>
 
-            <!-- Exemplo 1: Borda Anime -->
+            <!-- Exemplo 1: Rim Light -->
             <div class="example-card">
                 <div class="example-text">
-                    <h4>✨ Exemplo 1: Separação de Borda Estilo Anime</h4>
+                    <h4>✨ Exemplo: Separação de Borda Estilo Anime</h4>
                     <p class="desc">Linha brilhante traçando ombros, cabelo e escultura da figura contra fundo escuro.</p>
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Cinematic photo of action figure, strong rim lighting outline on hair and shoulders, dark moody background, soft fill light on front, dramatic contrast, unreal engine 5 render look --ar 9:16</span>
                 </div>
-                <div class="example-img-container" id="img-rim-anime">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-rim-anime</span>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="rim-bts.jpg" alt="Bastidores rim light">
+                        <div class="img-label">Bastidores</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="rim-result.jpg" alt="Resultado rim light">
+                        <div class="img-label">Resultado Final</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Exemplo 2: Silhueta Parcial -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🌑 Exemplo 2: Silhueta Parcial Épica</h4>
-                    <p class="desc">Figura quase toda no escuro, revelando apenas os contornos do corpo e o olhar.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Chiaroscuro lighting on action figure, edge rim light highlighting the silhouette, dramatic dark mood, mystery aesthetic, rim light outline, movie poster style --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-rim-silhouette">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-rim-silhouette</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- B) Teal & Orange -->
+            <!-- B) Teal & Orange / Neon -->
             <div class="card">
-                <h3>🎨 B) Esquema Neons / Contraste de Cores (Teal & Orange)</h3>
+                <h3>🎨 B) Esquema Neons / Contraste de Cores</h3>
                 <p>Use dois LEDs com cores opostas. O Redmi Note 13 Pro lida incrivelmente bem com saturação dessas luzes se a exposição estiver um pouco reduzida.</p>
             </div>
 
@@ -884,36 +780,22 @@
                                  [ 📱 CÂMERA ]
             </div>
 
-            <!-- Exemplo 1: Duelo Elemental -->
+            <!-- Exemplo 2: Neon -->
             <div class="example-card">
                 <div class="example-text">
-                    <h4>⚔️ Exemplo 1: Duelo Elemental</h4>
-                    <p class="desc">Metade do corpo em tom azul-frio, a outra metade em vermelho-fogo.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Dual tone color lighting on action figure, strong cyan light from left, fiery red orange light from right, split lighting contrast, epic anime battle visual style, high saturation --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-color-duel">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-color-duel</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 2: Cyberpunk -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🌃 Exemplo 2: Estilo Cyberpunk / Neon Urban</h4>
+                    <h4>🌃 Exemplo: Estilo Cyberpunk / Neon Urban</h4>
                     <p class="desc">Reflexos coloridos intensos sobre armadura ou roupas plásticas da figura.</p>
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Cyberpunk style lighting on action figure, neon blue and magenta rim lights, specular highlights on plastic armor, dark rain background, cinematic night shot --ar 9:16</span>
                 </div>
-                <div class="example-img-container" id="img-color-cyberpunk">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-color-cyberpunk</span>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="neon-bts.jpg" alt="Bastidores neon">
+                        <div class="img-label">Bastidores</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="neon-result.jpg" alt="Resultado neon">
+                        <div class="img-label">Resultado Final</div>
                     </div>
                 </div>
             </div>
@@ -945,36 +827,22 @@
                 </div>
             </div>
 
-            <!-- Exemplo 1: Aterrissagem -->
+            <!-- Exemplo 1: Diagonal -->
             <div class="example-card">
                 <div class="example-text">
-                    <h4>🦸 Exemplo 1: Aterrissagem de Impacto</h4>
+                    <h4>🦸 Exemplo: Aterrissagem de Impacto</h4>
                     <p class="desc">Personagem agachado com corpo inclinado na diagonal, pronto para saltar.</p>
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Dynamic anime pose action figure, superhero landing pose, diagonal line of action, body tilted forward, tension and energy, wide stance, cinematic photography --ar 9:16</span>
                 </div>
-                <div class="example-img-container" id="img-pose-landing">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-pose-landing</span>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="pose-diagonal-bts.jpg" alt="Bastidores pose diagonal">
+                        <div class="img-label">Bastidores</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 2: Ataque -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>💥 Exemplo 2: Ataque em Movimento</h4>
-                    <p class="desc">Torso girado e inclinado para o lado enquanto prepara um golpe.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Dynamic combat pose action figure, diagonal body axis, mid-attack posture, sense of speed and momentum, dark dramatic studio lighting, 8k --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-pose-attack">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-pose-attack</span>
+                    <div class="img-box">
+                        <img src="pose-diagonal-result.jpg" alt="Resultado pose diagonal">
+                        <div class="img-label">Resultado Final</div>
                     </div>
                 </div>
             </div>
@@ -994,36 +862,42 @@
                         / \
             </div>
 
-            <!-- Exemplo 1: Espada -->
+            <!-- Exemplo 2: Foreshortening -->
             <div class="example-card">
                 <div class="example-text">
-                    <h4>🗡️ Exemplo 1: Golpe de Espada em Direção à Tela</h4>
-                    <p class="desc">A ponta da espada gigantesca na frente com o personagem menor ao fundo.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Extreme foreshortening angle, action figure pointing sword directly at the camera, giant sword blade foreground, shallow depth of field, anime manga dynamic perspective --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-pose-sword">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-pose-sword</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 2: Soco -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🥊 Exemplo 2: Soco na Câmera</h4>
+                    <h4>🥊 Exemplo: Soco na Câmera</h4>
                     <p class="desc">O punho enorme no primeiro plano, cobrindo parte da imagem com desfoque de profundidade.</p>
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Action figure punching toward the lens, huge fist in sharp foreground focus, body small in background, perspective distortion, dramatic manga fight scene framing --ar 9:16</span>
                 </div>
-                <div class="example-img-container" id="img-pose-punch">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-pose-punch</span>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="foreshort-bts.jpg" alt="Bastidores foreshortening">
+                        <div class="img-label">Bastidores</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="foreshort-result.jpg" alt="Resultado foreshortening">
+                        <div class="img-label">Resultado Final</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo 3: Punch extra -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>💥 Bônus: Impacto de Soco</h4>
+                    <p class="desc">Variação do escorço com ênfase no impacto e velocidade do golpe.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Extreme foreshortening angle, action figure pointing fist directly at the camera, giant hand foreground, shallow depth of field, anime manga dynamic perspective --ar 9:16</span>
+                </div>
+                <div class="image-pair">
+                    <div class="img-box">
+                        <img src="punch-bts.jpg" alt="Bastidores soco">
+                        <div class="img-label">Bastidores</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="punch-result.jpg" alt="Resultado soco">
+                        <div class="img-label">Resultado Final</div>
                     </div>
                 </div>
             </div>
@@ -1113,40 +987,6 @@
                 </div>
             </div>
 
-            <!-- Exemplo 1: Hook -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>👁️ Exemplo 1: Hook Inicial (0.0s – 1.5s)</h4>
-                    <p class="desc">Close-up extremo nos olhos ou detalhe iluminado do personagem piscando em luzes rápidas.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Macro close-up shot of action figure helmet eye glowing, high tension lighting, fast motion blur feel, teaser video thumbnail style --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-edit-hook">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-edit-hook</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 2: Clímax -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🎬 Exemplo 2: Revelação Épica do Clímax (5.0s – 8.0s)</h4>
-                    <p class="desc">Cena completa revelada com fumaça, luzes de contorno e enquadramento de pôster de filme.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Full body hero shot of action figure standing in smoke, movie poster composition, volumetric light rays, color graded cinematic finish, masterpiece --ar 9:16</span>
-                </div>
-                <div class="example-img-container" id="img-edit-climax">
-                    <div class="img-placeholder">
-                        <span class="ph-icon">🖼️</span>
-                        <span class="ph-text">Gere esta imagem na aba <strong>Imagens</strong> do MyHUB.IA e substitua este placeholder</span>
-                        <span class="ph-id">img-edit-climax</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="card">
                 <h3>🎨 Color Grading</h3>
                 <ul>
@@ -1170,8 +1010,7 @@
     </main>
 
     <footer class="footer">
-        Guia Cinematográfico para Redmi Note 13 Pro · Criado para o nicho de Action Figures<br>
-        <span style="opacity:0.5;">As imagens placeholder devem ser geradas na aba <strong>Imagens</strong> do MyHUB.IA e substituídas pelos arquivos reais</span>
+        Guia Cinematográfico para Redmi Note 13 Pro · Criado para o nicho de Action Figures
     </footer>
 
     <script>
@@ -1206,3 +1045,4 @@
     </script>
 </body>
 </html>
+
