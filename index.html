@@ -395,7 +395,7 @@
         }
         .img-row .img-slot {
             position: relative;
-            min-height: 260px;
+            min-height: 280px;
             cursor: pointer;
             overflow: hidden;
         }
@@ -430,6 +430,13 @@
         .img-row .img-slot:hover .click-hint {
             opacity: 1;
         }
+        /* Single image (full width) */
+        .img-row.single {
+            grid-template-columns: 1fr;
+        }
+        .img-row.single .img-slot:first-child {
+            border-right: none;
+        }
 
         /* ── Lightbox / Modal ──────────── */
         .lightbox {
@@ -437,7 +444,7 @@
             position: fixed;
             inset: 0;
             z-index: 9999;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(0, 0, 0, 0.94);
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -458,7 +465,7 @@
             position: absolute;
             top: 20px;
             right: 30px;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #fff;
             cursor: pointer;
             z-index: 10;
@@ -595,27 +602,13 @@
 
         /* ── Responsive ──────────────── */
         @media (max-width: 700px) {
-            .tab-btn {
-                padding: 8px 13px;
-                font-size: 0.78rem;
-            }
-            .compare-row, .timeline {
-                grid-template-columns: 1fr 1fr;
-            }
-            .config-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .tab-btn { padding: 8px 13px; font-size: 0.78rem; }
+            .compare-row, .timeline { grid-template-columns: 1fr 1fr; }
+            .config-grid { grid-template-columns: 1fr 1fr; }
             .diagram { font-size: 0.62rem; }
-            .img-row {
-                grid-template-columns: 1fr;
-            }
-            .img-row .img-slot:first-child {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-            .img-row .img-slot {
-                min-height: 220px;
-            }
+            .img-row { grid-template-columns: 1fr; }
+            .img-row .img-slot:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+            .img-row .img-slot { min-height: 220px; }
         }
         @media (max-width: 420px) {
             .timeline { grid-template-columns: 1fr; }
@@ -726,7 +719,6 @@
                [o]
             </div>
 
-            <!-- Exemplo: Gigante -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🧊 Exemplo: Perspectiva de Gigante</h4>
@@ -763,7 +755,6 @@
                  [ 📱 CÂMERA ]  ➔ ➔ ➔  (Deslize suave para o lado)
             </div>
 
-            <!-- Exemplo: Parallax -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🪨 Exemplo: Profundidade em Parallax</h4>
@@ -810,7 +801,6 @@
                              [ 📱 CÂMERA ]
             </div>
 
-            <!-- Exemplo: Rim Light -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>✨ Exemplo: Separação de Borda Estilo Anime</h4>
@@ -843,7 +833,6 @@
                                  [ 📱 CÂMERA ]
             </div>
 
-            <!-- Exemplo: Neon -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🌃 Exemplo: Estilo Cyberpunk / Neon Urban</h4>
@@ -890,7 +879,6 @@
                 </div>
             </div>
 
-            <!-- Exemplo: Diagonal -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🦸 Exemplo: Aterrissagem de Impacto</h4>
@@ -925,7 +913,6 @@
                         / \
             </div>
 
-            <!-- Exemplo: Espada -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🗡️ Exemplo: Golpe de Espada em Direção à Tela</h4>
@@ -935,31 +922,11 @@
                 </div>
                 <div class="img-row">
                     <div class="img-slot" data-src="foreshort-bts.jpg">
-                        <img src="foreshort-bts.jpg" alt="Foreshortening espada - foto 1">
+                        <img src="foreshort-bts.jpg" alt="Foreshortening - foto 1">
                         <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                     <div class="img-slot" data-src="foreshort-result.jpg">
-                        <img src="foreshort-result.jpg" alt="Foreshortening espada - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo: Soco -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🥊 Exemplo: Soco na Câmera</h4>
-                    <p class="desc">O punho enorme no primeiro plano, cobrindo parte da imagem com desfoque de profundidade.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Action figure punching toward the lens, huge fist in sharp foreground focus, body small in background, perspective distortion, dramatic manga fight scene framing --ar 9:16</span>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="punch-bts.jpg">
-                        <img src="punch-bts.jpg" alt="Soco - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="punch-result.jpg">
-                        <img src="punch-result.jpg" alt="Soco - foto 2">
+                        <img src="foreshort-result.jpg" alt="Foreshortening - foto 2">
                         <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
@@ -981,10 +948,7 @@
             <table class="fx-table">
                 <thead>
                     <tr>
-                        <th class="emoji-col"></th>
-                        <th>Efeito</th>
-                        <th>Como Fazer</th>
-                        <th>Resultado</th>
+                        <th class="emoji-col"></th><th>Efeito</th><th>Como Fazer</th><th>Resultado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1050,6 +1014,38 @@
                 </div>
             </div>
 
+            <!-- Exemplo: Hook Inicial -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>👁️ Exemplo 1: Hook Inicial (0.0s – 1.5s)</h4>
+                    <p class="desc">Close-up extremo nos olhos ou detalhe iluminado do personagem piscando em luzes rápidas.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Macro close-up shot of action figure helmet eye glowing, high tension lighting, fast motion blur feel, teaser video thumbnail style --ar 9:16</span>
+                </div>
+                <div class="img-row single">
+                    <div class="img-slot" data-src="punch-bts.jpg">
+                        <img src="punch-bts.jpg" alt="Hook inicial - close-up">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo: Clímax -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🎬 Exemplo 2: Revelação Épica do Clímax (5.0s – 8.0s)</h4>
+                    <p class="desc">Cena completa revelada com fumaça, luzes de contorno e enquadramento de pôster de filme.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Full body hero shot of action figure standing in smoke, movie poster composition, volumetric light rays, color graded cinematic finish, masterpiece --ar 9:16</span>
+                </div>
+                <div class="img-row single">
+                    <div class="img-slot" data-src="punch-result.jpg">
+                        <img src="punch-result.jpg" alt="Clímax - revelação épica">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <h3>🎨 Color Grading</h3>
                 <ul>
@@ -1106,12 +1102,11 @@
             }
         });
 
-        // Lightbox functionality
+        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
 
-        // Open lightbox when clicking any image in img-slot
         document.querySelectorAll('.img-slot').forEach(slot => {
             slot.addEventListener('click', () => {
                 const src = slot.dataset.src;
@@ -1123,7 +1118,6 @@
             });
         });
 
-        // Close lightbox
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
@@ -1135,9 +1129,7 @@
             if (e.target === lightbox) closeLightbox();
         });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
-            }
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
         });
     </script>
 </body>
