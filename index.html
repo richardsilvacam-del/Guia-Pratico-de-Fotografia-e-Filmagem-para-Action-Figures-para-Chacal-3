@@ -385,38 +385,92 @@
             border: 1px dashed var(--border);
         }
 
-        /* ── Image Pair (BTS + Result) ── */
-        .image-pair {
+        /* ── Image Row (clickable) ────── */
+        .img-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
             border-top: 1px solid var(--border);
             background: #0d0d18;
         }
-        .image-pair .img-box {
+        .img-row .img-slot {
             position: relative;
             min-height: 260px;
-            display: flex;
-            flex-direction: column;
+            cursor: pointer;
+            overflow: hidden;
         }
-        .image-pair .img-box:first-child {
+        .img-row .img-slot:first-child {
             border-right: 1px solid var(--border);
         }
-        .image-pair .img-box img {
+        .img-row .img-slot img {
             width: 100%;
-            height: 260px;
+            height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        .image-pair .img-label {
-            background: var(--surface);
-            color: var(--muted);
+        .img-row .img-slot:hover img {
+            transform: scale(1.03);
+            opacity: 0.85;
+        }
+        .img-row .img-slot .click-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
             font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 8px;
-            text-align: center;
-            border-top: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2;
+        }
+        .img-row .img-slot:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* ── Lightbox / Modal ──────────── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            cursor: default;
+            border-radius: 6px;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+        }
+        .lightbox .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            background: none;
+            border: none;
+            font-family: var(--font);
+            line-height: 1;
+        }
+        .lightbox .close-btn:hover {
+            opacity: 1;
         }
 
         /* ── Effects Table ────────────── */
@@ -552,12 +606,15 @@
                 grid-template-columns: 1fr 1fr;
             }
             .diagram { font-size: 0.62rem; }
-            .image-pair {
+            .img-row {
                 grid-template-columns: 1fr;
             }
-            .image-pair .img-box:first-child {
+            .img-row .img-slot:first-child {
                 border-right: none;
                 border-bottom: 1px solid var(--border);
+            }
+            .img-row .img-slot {
+                min-height: 220px;
             }
         }
         @media (max-width: 420px) {
@@ -585,6 +642,12 @@
         <button class="tab-btn" data-tab="effects">✨ Efeitos</button>
         <button class="tab-btn" data-tab="editing">🎬 Edição</button>
     </nav>
+
+    <!-- ═══════════ LIGHTBOX ═══════════ -->
+    <div class="lightbox" id="lightbox">
+        <button class="close-btn" id="lightboxClose">&times;</button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
 
     <!-- ═══════════ CONTENT ═══════════ -->
     <main class="container">
@@ -663,7 +726,7 @@
                [o]
             </div>
 
-            <!-- Exemplo 1: Gigante -->
+            <!-- Exemplo: Gigante -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🧊 Exemplo: Perspectiva de Gigante</h4>
@@ -671,14 +734,14 @@
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Low-angle cinematic shot of a realistic action figure standing on a miniature rooftop, giant scale illusion, worm eye view, dramatic upward perspective, volumetric lighting, photorealistic, 8k resolution --ar 9:16</span>
                 </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="angle-giant-bts.jpg" alt="Bastidores perspectiva de gigante">
-                        <div class="img-label">Bastidores</div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="angle-giant-bts.jpg">
+                        <img src="angle-giant-bts.jpg" alt="Perspectiva de gigante - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
-                    <div class="img-box">
-                        <img src="angle-giant-result.jpg" alt="Resultado perspectiva de gigante">
-                        <div class="img-label">Resultado Final</div>
+                    <div class="img-slot" data-src="angle-giant-result.jpg">
+                        <img src="angle-giant-result.jpg" alt="Perspectiva de gigante - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
             </div>
@@ -700,7 +763,7 @@
                  [ 📱 CÂMERA ]  ➔ ➔ ➔  (Deslize suave para o lado)
             </div>
 
-            <!-- Exemplo 2: Parallax -->
+            <!-- Exemplo: Parallax -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🪨 Exemplo: Profundidade em Parallax</h4>
@@ -708,14 +771,14 @@
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Cinematic parallax frame, foreground blurred embers, midground sharp hero action figure, background distant blurred explosions, layered cinematic depth, movie screenshot quality --ar 9:16</span>
                 </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="parallax-bts.jpg" alt="Bastidores parallax">
-                        <div class="img-label">Bastidores</div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="parallax-bts.jpg">
+                        <img src="parallax-bts.jpg" alt="Parallax - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
-                    <div class="img-box">
-                        <img src="parallax-result.jpg" alt="Resultado parallax">
-                        <div class="img-label">Resultado Final</div>
+                    <div class="img-slot" data-src="parallax-result.jpg">
+                        <img src="parallax-result.jpg" alt="Parallax - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
             </div>
@@ -747,7 +810,7 @@
                              [ 📱 CÂMERA ]
             </div>
 
-            <!-- Exemplo 1: Rim Light -->
+            <!-- Exemplo: Rim Light -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>✨ Exemplo: Separação de Borda Estilo Anime</h4>
@@ -755,14 +818,14 @@
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Cinematic photo of action figure, strong rim lighting outline on hair and shoulders, dark moody background, soft fill light on front, dramatic contrast, unreal engine 5 render look --ar 9:16</span>
                 </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="rim-bts.jpg" alt="Bastidores rim light">
-                        <div class="img-label">Bastidores</div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="rim-bts.jpg">
+                        <img src="rim-bts.jpg" alt="Rim light - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
-                    <div class="img-box">
-                        <img src="rim-result.jpg" alt="Resultado rim light">
-                        <div class="img-label">Resultado Final</div>
+                    <div class="img-slot" data-src="rim-result.jpg">
+                        <img src="rim-result.jpg" alt="Rim light - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
             </div>
@@ -780,7 +843,7 @@
                                  [ 📱 CÂMERA ]
             </div>
 
-            <!-- Exemplo 2: Neon -->
+            <!-- Exemplo: Neon -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🌃 Exemplo: Estilo Cyberpunk / Neon Urban</h4>
@@ -788,14 +851,14 @@
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Cyberpunk style lighting on action figure, neon blue and magenta rim lights, specular highlights on plastic armor, dark rain background, cinematic night shot --ar 9:16</span>
                 </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="neon-bts.jpg" alt="Bastidores neon">
-                        <div class="img-label">Bastidores</div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="neon-bts.jpg">
+                        <img src="neon-bts.jpg" alt="Neon - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
-                    <div class="img-box">
-                        <img src="neon-result.jpg" alt="Resultado neon">
-                        <div class="img-label">Resultado Final</div>
+                    <div class="img-slot" data-src="neon-result.jpg">
+                        <img src="neon-result.jpg" alt="Neon - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
             </div>
@@ -827,7 +890,7 @@
                 </div>
             </div>
 
-            <!-- Exemplo 1: Diagonal -->
+            <!-- Exemplo: Diagonal -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🦸 Exemplo: Aterrissagem de Impacto</h4>
@@ -835,14 +898,14 @@
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Dynamic anime pose action figure, superhero landing pose, diagonal line of action, body tilted forward, tension and energy, wide stance, cinematic photography --ar 9:16</span>
                 </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="pose-diagonal-bts.jpg" alt="Bastidores pose diagonal">
-                        <div class="img-label">Bastidores</div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="pose-diagonal-bts.jpg">
+                        <img src="pose-diagonal-bts.jpg" alt="Pose diagonal - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
-                    <div class="img-box">
-                        <img src="pose-diagonal-result.jpg" alt="Resultado pose diagonal">
-                        <div class="img-label">Resultado Final</div>
+                    <div class="img-slot" data-src="pose-diagonal-result.jpg">
+                        <img src="pose-diagonal-result.jpg" alt="Pose diagonal - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
             </div>
@@ -862,7 +925,27 @@
                         / \
             </div>
 
-            <!-- Exemplo 2: Foreshortening -->
+            <!-- Exemplo: Espada -->
+            <div class="example-card">
+                <div class="example-text">
+                    <h4>🗡️ Exemplo: Golpe de Espada em Direção à Tela</h4>
+                    <p class="desc">A ponta da espada gigantesca no primeiro plano com o personagem menor ao fundo.</p>
+                    <span class="prompt-label">🎨 Prompt para IA</span>
+                    <span class="prompt">Extreme foreshortening angle, action figure pointing sword directly at the camera, giant sword blade foreground, shallow depth of field, anime manga dynamic perspective --ar 9:16</span>
+                </div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="foreshort-bts.jpg">
+                        <img src="foreshort-bts.jpg" alt="Foreshortening espada - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                    <div class="img-slot" data-src="foreshort-result.jpg">
+                        <img src="foreshort-result.jpg" alt="Foreshortening espada - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exemplo: Soco -->
             <div class="example-card">
                 <div class="example-text">
                     <h4>🥊 Exemplo: Soco na Câmera</h4>
@@ -870,34 +953,14 @@
                     <span class="prompt-label">🎨 Prompt para IA</span>
                     <span class="prompt">Action figure punching toward the lens, huge fist in sharp foreground focus, body small in background, perspective distortion, dramatic manga fight scene framing --ar 9:16</span>
                 </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="foreshort-bts.jpg" alt="Bastidores foreshortening">
-                        <div class="img-label">Bastidores</div>
+                <div class="img-row">
+                    <div class="img-slot" data-src="punch-bts.jpg">
+                        <img src="punch-bts.jpg" alt="Soco - foto 1">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
-                    <div class="img-box">
-                        <img src="foreshort-result.jpg" alt="Resultado foreshortening">
-                        <div class="img-label">Resultado Final</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo 3: Punch extra -->
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>💥 Bônus: Impacto de Soco</h4>
-                    <p class="desc">Variação do escorço com ênfase no impacto e velocidade do golpe.</p>
-                    <span class="prompt-label">🎨 Prompt para IA</span>
-                    <span class="prompt">Extreme foreshortening angle, action figure pointing fist directly at the camera, giant hand foreground, shallow depth of field, anime manga dynamic perspective --ar 9:16</span>
-                </div>
-                <div class="image-pair">
-                    <div class="img-box">
-                        <img src="punch-bts.jpg" alt="Bastidores soco">
-                        <div class="img-label">Bastidores</div>
-                    </div>
-                    <div class="img-box">
-                        <img src="punch-result.jpg" alt="Resultado soco">
-                        <div class="img-label">Resultado Final</div>
+                    <div class="img-slot" data-src="punch-result.jpg">
+                        <img src="punch-result.jpg" alt="Soco - foto 2">
+                        <span class="click-hint">🔍 Clique para ampliar</span>
                     </div>
                 </div>
             </div>
@@ -1042,8 +1105,40 @@
                 allBtns[next].click();
             }
         });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        // Open lightbox when clicking any image in img-slot
+        document.querySelectorAll('.img-slot').forEach(slot => {
+            slot.addEventListener('click', () => {
+                const src = slot.dataset.src;
+                if (src) {
+                    lightboxImg.src = src;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
-
-
