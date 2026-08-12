@@ -118,9 +118,15 @@
             padding: 6px 12px;
             overflow-x: auto;
             scrollbar-width: none;
-            justify-content: center;
             flex-wrap: nowrap;
             -webkit-overflow-scrolling: touch;
+        }
+        /* Centraliza quando cabe e permite scroll quando estoura */
+        .tab-btn:first-child {
+            margin-left: auto;
+        }
+        .tab-btn:last-child {
+            margin-right: auto;
         }
         .tab-nav::-webkit-scrollbar {
             display: none;
@@ -586,19 +592,10 @@
         }
 
         /* ── Responsive ──────────────── */
-        /* Mobile: abas alinhadas à esquerda com scroll horizontal */
-        @media (max-width: 900px) {
-            .tab-nav {
-                justify-content: flex-start;
-                gap: 2px;
-                padding: 6px 8px;
-            }
-        }
         @media (max-width: 700px) {
             .tab-nav {
                 padding: 6px 8px;
                 gap: 2px;
-                justify-content: flex-start;
             }
             .tab-btn {
                 padding: 8px 12px;
