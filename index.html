@@ -1,1224 +1,389 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Cinematográfico • Action Figures no Redmi Note 13 Pro</title>
-    <style>
-        :root {
-            --bg: #0a0a0f;
-            --surface: #12121a;
-            --card: #181825;
-            --border: #252535;
-            --text: #e0e0e0;
-            --muted: #8888a0;
-            --accent: #f0a050;
-            --accent2: #50b8e0;
-            --danger: #e05570;
-            --green: #50d090;
-            --gradient: linear-gradient(135deg, #f0a050 0%, #e07040 50%, #c04060 100%);
-            --shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
-            --radius: 14px;
-            --radius-sm: 8px;
-            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chacal O Colecionador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    :root {
+      --neon-purple: #a855f7;
+      --neon-purple-dark: #7c3aed;
+      --neon-gold: #fbbf24;
+      --bg-dark: #0a0a0f;
+      --bg-card: rgba(15, 10, 30, 0.85);
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-        body {
-            font-family: var(--font);
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
+    /* ========== FUNDO COM IMAGEM ========== */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      background: url('imagens/fundo-colecionador.jpg') center/cover no-repeat;
+      z-index: -3;
+    }
 
-        /* ── Hero ──────────────────────── */
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 70px 24px 50px;
-            background: radial-gradient(ellipse at 50% 0%, #1a1030 0%, #0a0a0f 70%);
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(240, 160, 80, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero .badge {
-            display: inline-block;
-            background: var(--gradient);
-            color: #0a0a0f;
-            font-weight: 700;
-            font-size: 0.75rem;
-            padding: 5px 14px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-        .hero .subtitle {
-            color: var(--muted);
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .hero .device-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 18px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at top, rgba(124, 58, 237, 0.35), transparent 60%),
+        radial-gradient(ellipse at bottom, rgba(10, 10, 15, 0.95), transparent 70%),
+        linear-gradient(180deg, rgba(10,10,15,0.75) 0%, rgba(10,10,15,0.95) 100%);
+      z-index: -2;
+    }
 
-        /* ── Tab Navigation ───────────── */
-        .tab-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 4px;
-            padding: 6px 12px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            flex-wrap: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-        /* Centraliza quando cabe e permite scroll quando estoura */
-        .tab-btn:first-child {
-            margin-left: auto;
-        }
-        .tab-btn:last-child {
-            margin-right: auto;
-        }
-        .tab-nav::-webkit-scrollbar {
-            display: none;
-        }
-        .tab-btn {
-            flex-shrink: 0;
-            background: transparent;
-            color: var(--muted);
-            border: 1px solid transparent;
-            padding: 10px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            font-family: var(--font);
-            transition: all 0.25s;
-            white-space: nowrap;
-        }
-        .tab-btn:hover {
-            color: #fff;
-            background: var(--surface);
-        }
-        .tab-btn.active {
-            background: var(--card);
-            color: var(--accent);
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(240, 160, 80, 0.15);
-        }
+    /* ========== NEBLINA ========== */
+    .fog {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .fog::before, .fog::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+      animation: fogMove 25s linear infinite;
+    }
+    .fog::after {
+      animation-duration: 35s;
+      animation-direction: reverse;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 50%);
+    }
+    @keyframes fogMove {
+      0%   { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
 
-        /* ── Main Content ─────────────── */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 20px 80px;
-        }
-        .tab-panel {
-            display: none;
-            animation: fadeSlide 0.4s ease;
-        }
-        .tab-panel.active {
-            display: block;
-        }
-        @keyframes fadeSlide {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* ========== PARTÍCULAS ========== */
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-        .panel-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .panel-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-        .panel-icon.setup { background: rgba(80, 184, 224, 0.15); }
-        .panel-icon.config { background: rgba(240, 160, 80, 0.15); }
-        .panel-icon.angles { background: rgba(80, 184, 224, 0.15); }
-        .panel-icon.light { background: rgba(240, 200, 80, 0.15); }
-        .panel-icon.pose { background: rgba(224, 85, 112, 0.15); }
-        .panel-icon.effects { background: rgba(160, 100, 220, 0.15); }
-        .panel-icon.edit { background: rgba(80, 208, 144, 0.15); }
-        .panel-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+    /* ========== HEADER ========== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        /* ── Cards ────────────────────── */
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 18px;
-            box-shadow: var(--shadow);
-        }
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .card p {
-            color: var(--muted);
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-        }
-        .card ul li {
-            padding: 6px 0 6px 22px;
-            position: relative;
-            color: var(--text);
-            font-size: 0.93rem;
-        }
-        .card ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 0.8rem;
-            top: 7px;
-        }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-wrap img {
+      height: 60px;
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.8));
+      transition: transform 0.3s;
+    }
+    .logo-wrap img:hover { transform: scale(1.08); }
 
-        /* ── Warning Box ──────────────── */
-        .warning {
-            background: rgba(224, 85, 112, 0.08);
-            border: 1px solid rgba(224, 85, 112, 0.3);
-            border-radius: var(--radius);
-            padding: 18px 22px;
-            margin: 20px 0;
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-        }
-        .warning .icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        .warning strong {
-            color: var(--danger);
-            display: block;
-            margin-bottom: 4px;
-        }
-        .warning p {
-            color: #d0a0a8;
-            font-size: 0.9rem;
-            margin: 0;
-        }
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      transition: color 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon-purple);
+      box-shadow: 0 0 8px var(--neon-purple);
+      transition: width 0.3s;
+    }
+    nav a:hover { color: var(--neon-purple); }
+    nav a:hover::after { width: 100%; }
 
-        /* ── Tip Box ──────────────────── */
-        .tip {
-            background: rgba(80, 208, 144, 0.07);
-            border: 1px solid rgba(80, 208, 144, 0.25);
-            border-radius: var(--radius);
-            padding: 16px 20px;
-            margin: 16px 0;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        .tip .icon {
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-        .tip p {
-            color: #a0d8b8;
-            font-size: 0.9rem;
-            margin: 0;
-        }
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+    }
 
-        /* ── ASCII Diagram Block ──────── */
-        .diagram {
-            background: #0d0d18;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            margin: 16px 0;
-            overflow-x: auto;
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            line-height: 1.35;
-            color: #c0c0d0;
-            white-space: pre;
-            position: relative;
-        }
-        .diagram .highlight { color: var(--accent); font-weight: 700; }
-        .diagram .highlight2 { color: var(--accent2); font-weight: 700; }
-        .diagram .dim { color: #555; }
-        .diagram-label {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 0.65rem;
-            color: var(--muted);
-            background: var(--surface);
-            padding: 2px 10px;
-            border-radius: 10px;
-            font-family: var(--font);
-        }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #fff 0%, var(--neon-purple) 50%, var(--neon-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
 
-        /* ── Config Grid ──────────────── */
-        .config-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-        }
-        .config-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            text-align: center;
-        }
-        .config-item .value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-        .config-item .label {
-            font-size: 0.78rem;
-            color: var(--muted);
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6)); }
+      50%      { filter: drop-shadow(0 0 30px rgba(168, 85, 247, 1)); }
+    }
 
-        /* ── EXAMPLE CARDS WITH IMAGES ─── */
-        .example-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-        .example-card .example-text {
-            padding: 24px;
-        }
-        .example-card .example-text h4 {
-            font-size: 1rem;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-        .example-card .example-text .desc {
-            color: var(--muted);
-            font-size: 0.88rem;
-            margin-bottom: 12px;
-        }
+    .hero p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      color: #d1d5db;
+      margin-top: 20px;
+      max-width: 700px;
+    }
 
-        /* ── Image Row (clickable) ────── */
-        .img-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border-top: 1px solid var(--border);
-            background: #0d0d18;
-        }
-        .img-row .img-slot {
-            position: relative;
-            min-height: 280px;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        .img-row .img-slot:first-child {
-            border-right: 1px solid var(--border);
-        }
-        .img-row .img-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .img-row .img-slot:hover img {
-            transform: scale(1.03);
-            opacity: 0.85;
-        }
-        .img-row .img-slot .click-hint {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            font-size: 0.7rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 2;
-        }
-        .img-row .img-slot:hover .click-hint {
-            opacity: 1;
-        }
-        /* Single image (full width) */
-        .img-row.single {
-            grid-template-columns: 1fr;
-        }
-        .img-row.single .img-slot:first-child {
-            border-right: none;
-        }
+    .cta-btn {
+      margin-top: 40px;
+      padding: 16px 45px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--neon-purple-dark), var(--neon-purple));
+      border: 2px solid var(--neon-purple);
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.2);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.9), inset 0 0 25px rgba(168, 85, 247, 0.4);
+    }
 
-        /* ── Lightbox / Modal ──────────── */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.94);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            cursor: pointer;
-        }
-        .lightbox.active {
-            display: flex;
-        }
-        .lightbox img {
-            max-width: 95vw;
-            max-height: 95vh;
-            object-fit: contain;
-            cursor: default;
-            border-radius: 6px;
-            box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
-        }
-        .lightbox .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2.2rem;
-            color: #fff;
-            cursor: pointer;
-            z-index: 10;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-            background: none;
-            border: none;
-            font-family: var(--font);
-            line-height: 1;
-        }
-        .lightbox .close-btn:hover {
-            opacity: 1;
-        }
+    /* ========== SEÇÃO DE CARDS ========== */
+    .section {
+      padding: 80px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-        /* ── Effects Table ────────────── */
-        .fx-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 18px 0;
-            font-size: 0.9rem;
-        }
-        .fx-table th {
-            background: var(--surface);
-            color: var(--accent);
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 700;
-            border-bottom: 2px solid var(--border);
-        }
-        .fx-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text);
-        }
-        .fx-table tr:hover td {
-            background: rgba(255, 255, 255, 0.015);
-        }
-        .fx-table .emoji-col {
-            font-size: 1.4rem;
-            text-align: center;
-            width: 50px;
-        }
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: var(--neon-purple);
+      margin: 15px auto 0;
+      box-shadow: 0 0 10px var(--neon-purple);
+    }
 
-        /* ── Timeline ─────────────────── */
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 18px 0;
-        }
-        .timeline-step {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            text-align: center;
-            position: relative;
-        }
-        .timeline-step .time {
-            font-size: 0.7rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-        .timeline-step .step-title {
-            font-weight: 700;
-            color: #fff;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-        .timeline-step .step-desc {
-            font-size: 0.78rem;
-            color: var(--muted);
-        }
-        .timeline-step.hook { border-color: var(--accent); }
-        .timeline-step.climax { border-color: var(--danger); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
 
-        /* ── Comparison Row ───────────── */
-        .compare-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 18px 0;
-        }
-        .compare-card {
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            text-align: center;
-        }
-        .compare-card.bad {
-            background: rgba(224, 85, 112, 0.06);
-            border: 1px solid rgba(224, 85, 112, 0.2);
-        }
-        .compare-card.good {
-            background: rgba(80, 208, 144, 0.06);
-            border: 1px solid rgba(80, 208, 144, 0.2);
-        }
-        .compare-card .verdict {
-            font-weight: 800;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-        }
-        .bad .verdict { color: var(--danger); }
-        .good .verdict { color: var(--green); }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      backdrop-filter: blur(8px);
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+      transition: left 0.5s;
+    }
+    .card:hover::before { left: 100%; }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--neon-purple);
+      box-shadow: 0 10px 40px rgba(168, 85, 247, 0.4);
+    }
 
-        /* ── Section divider ──────────── */
-        .section-divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 32px 0 18px;
-            color: var(--muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .section-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
+    .card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      color: var(--neon-gold);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .card p { color: #d1d5db; line-height: 1.6; }
 
-        /* ── Footer ───────────────────── */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 0.8rem;
-        }
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid rgba(168, 85, 247, 0.3);
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
 
-        /* ── Responsive ──────────────── */
-        @media (max-width: 700px) {
-            .tab-nav {
-                padding: 6px 8px;
-                gap: 2px;
-            }
-            .tab-btn {
-                padding: 8px 12px;
-                font-size: 0.75rem;
-            }
-            .compare-row, .timeline { grid-template-columns: 1fr 1fr; }
-            .config-grid { grid-template-columns: 1fr 1fr; }
-            .diagram { font-size: 0.62rem; }
-            .img-row { grid-template-columns: 1fr; }
-            .img-row .img-slot:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-            .img-row .img-slot { min-height: 220px; }
-        }
-        @media (max-width: 420px) {
-            .timeline { grid-template-columns: 1fr; }
-            .config-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+      nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+      .section { padding: 50px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ═══════════ HERO ═══════════ -->
-    <section class="hero">
-        <span class="badge">Guia Definitivo</span>
-        <h1>Action Figures Cinematográficas</h1>
-        <p class="subtitle">Tudo que você precisa para extrair o máximo do sensor de 200 MP com OIS do Redmi Note 13 Pro e criar conteúdo profissional para o nicho.</p>
-        <div class="device-tag">📱 Redmi Note 13 Pro • HyperOS • Sensor Principal 1X</div>
-    </section>
+  <!-- Camadas de fundo -->
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+  <div class="fog"></div>
+  <canvas id="particles"></canvas>
 
-    <!-- ═══════════ TAB NAVIGATION ═══════════ -->
-    <nav class="tab-nav" id="tabNav">
-        <button class="tab-btn active" data-tab="setup">🛠️ Setup</button>
-        <button class="tab-btn" data-tab="config">⚙️ Configurações</button>
-        <button class="tab-btn" data-tab="angles">📐 Ângulos</button>
-        <button class="tab-btn" data-tab="lighting">💡 Iluminação</button>
-        <button class="tab-btn" data-tab="poses">🎯 Poses</button>
-        <button class="tab-btn" data-tab="effects">✨ Efeitos</button>
-        <button class="tab-btn" data-tab="editing">🎬 Edição</button>
-    </nav>
-
-    <!-- ═══════════ LIGHTBOX ═══════════ -->
-    <div class="lightbox" id="lightbox">
-        <button class="close-btn" id="lightboxClose">&times;</button>
-        <img src="" alt="" id="lightboxImg">
+  <!-- Header -->
+  <header>
+    <div class="logo-wrap">
+      <img src="imagens/logo-chacal.png" alt="Chacal O Colecionador" />
     </div>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Coleção</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- ═══════════ CONTENT ═══════════ -->
-    <main class="container">
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Chacal O Colecionador</h1>
+    <p>Descubra o universo dos action figures, colecionáveis e raridades. Reviews, unboxings e a paixão por cada peça da coleção.</p>
+    <button class="cta-btn">Explorar Coleção</button>
+  </section>
 
-        <!-- ── TAB 0: SETUP ── -->
-        <section class="tab-panel active" id="setup">
-            <div class="panel-header">
-                <div class="panel-icon setup">🛠️</div>
-                <h2>0. Setup do Estúdio</h2>
-            </div>
+  <!-- Cards -->
+  <section class="section">
+    <h2 class="section-title">Destaques da Coleção</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🎮 Action Figures</h3>
+        <p>As peças mais raras e cobiçadas do mundo dos colecionáveis, com reviews detalhados e fotos em alta qualidade.</p>
+      </div>
+      <div class="card">
+        <h3>🕹️ Retrô Gaming</h3>
+        <p>De Atari a consoles modernos, revisitando a história dos games através de suas figuras e memorabilia.</p>
+      </div>
+      <div class="card">
+        <h3>🎬 Pop Culture</h3>
+        <p>Heróis, vilões e personagens icônicos do cinema, quadrinhos e séries em miniaturas de colecionador.</p>
+      </div>
+      <div class="card">
+        <h3>📦 Unboxings</h3>
+        <p>Acompanhe a abertura das novidades mais esperadas e veja cada detalhe antes de comprar.</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="card">
-                <h3>🏠 Monte seu espaço de gravação</h3>
-                <p>Antes de ligar a câmera, o ambiente precisa estar pronto. Um bom setup economiza horas de edição e eleva a qualidade do canal inteiro.</p>
-                <ul>
-                    <li><strong>Mesa limpa e estável:</strong> use uma mesa sem reflexos indesejados ou use um tapete preto/tecido fosco como fundo.</li>
-                    <li><strong>Espaço mínimo:</strong> 60 cm entre a figura e o fundo para conseguir separação de luz e evitar sombras duras.</li>
-                    <li><strong>Controle a luz ambiente:</strong> feche cortinas, apague luzes de teto e trabalhe em ambiente escuro. Quanto mais escuro, mais controle você tem.</li>
-                </ul>
-            </div>
+  <footer>
+    © 2026 Chacal O Colecionador — Todos os direitos reservados
+  </footer>
 
-            <div class="diagram">
-                <span class="diagram-label">Layout do Estúdio</span>
-                         [ LUZ AMBIENTE: APAGADA ]
-                                    │
-                    [ LUZ LATERAL ]   [ LUZ LATERAL ]
-                            \         /
-                             \       /
-                              \     /
-                            [ <span class="highlight">FIGURA</span> ]
-                                  │
-                            [ 📱 CÂMERA ]
-                                  │
-                         [ MESA + FUNDO PRETO ]
-            </div>
+  <!-- Script de Partículas -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-            <div class="card">
-                <h3>📱 Posicionamento do Redmi Note 13 Pro</h3>
-                <p>Coloque o celular em um tripé ou apoio estável na altura do peito da figura. Evite segurar na mão — a OIS ajuda, mas estabilidade física é insubstituível.</p>
-                <ul>
-                    <li><strong>Altura da lente:</strong> na altura dos olhos da figura para ângulo natural e imersivo.</li>
-                    <li><strong>Distância inicial:</strong> 20–40 cm da figura, dependendo do tamanho e do enquadramento desejado.</li>
-                    <li><strong>Modo avião ativado:</strong> evita notificações, vibrações e quedas de performance durante a gravação.</li>
-                </ul>
-            </div>
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-            <div class="config-grid">
-                <div class="config-item"><div class="value">Escuro</div><div class="label">Ambiente</div></div>
-                <div class="config-item"><div class="value">Tripé</div><div class="label">Estabilização</div></div>
-                <div class="config-item"><div class="value">60 cm</div><div class="label">Fundo da figura</div></div>
-                <div class="config-item"><div class="value">Avião</div><div class="label">Modo celular</div></div>
-            </div>
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = -(Math.random() * 0.5 + 0.2);
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.color = Math.random() > 0.7 ? '#fbbf24' : '#a855f7';
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        if (this.y < -10) this.reset(), this.y = canvas.height + 10;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.opacity;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+      }
+    }
 
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🔄 Exemplo: Antes e Depois do Setup</h4>
-                    <p class="desc">Esquerda: ambiente com luz de teto, celular na mão e fundo bagunçado. Direita: ambiente controlado, tripé e fundo limpo.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="setup-antes.jpg">
-                        <img src="setup-antes.jpg" alt="Setup antes - ambiente bagunçado">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="setup-depois.jpg">
-                        <img src="setup-depois.jpg" alt="Setup depois - estúdio organizado">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
 
-            <div class="section-divider">Iluminação base</div>
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 
-            <div class="card">
-                <h3>💡 Luz básica para começar</h3>
-                <p>Você não precisa de equipamento caro. Comece com o que tem e evolua. Aqui estão três opções de setup:</p>
-                <ul>
-                    <li><strong>Setup 1 — Luz natural + rebatedor:</strong> use uma janela como luz principal e um papel branco para suavizar sombras. Ótimo para fotos, ruim para vídeos noturnos.</li>
-                    <li><strong>Setup 2 — Duas lâmpadas LED:</strong> uma à frente/suave e outra atrás como rim light. Controle total de horário.</li>
-                    <li><strong>Setup 3 — Ring light + gelatina colorida:</strong> luz frontal uniforme com toques de cor no fundo. Ideal para estética anime/cyber.</li>
-                </ul>
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🌑 Exemplo: Iluminação Antes/Depois</h4>
-                    <p class="desc">Mesma figura, mesmo ângulo. A diferença está na direção e temperatura da luz.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="light-antes.jpg">
-                        <img src="light-antes.jpg" alt="Iluminação antes - luz plana">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="light-depois.jpg">
-                        <img src="light-depois.jpg" alt="Iluminação depois - luz dramática">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tip">
-                <span class="icon">✅</span>
-                <p><strong>Checklist rápido antes de gravar:</strong> ambiente escuro, celular no tripé, modo avião, lentes limpas, bateria acima de 50%, e memória livre suficiente para gravar em 4K.</p>
-            </div>
-        </section>
-
-        <!-- ── TAB 1: CONFIGURAÇÕES ── -->
-        <section class="tab-panel" id="config">
-            <div class="panel-header">
-                <div class="panel-icon config">⚙️</div>
-                <h2>1. Configurações Decisivas</h2>
-            </div>
-
-            <div class="card">
-                <h3>🔑 Regras de Ouro antes de ligar as luzes</h3>
-                <ul>
-                    <li><strong>Esqueça o Modo 200MP para vídeos:</strong> ele é só para fotos. Use o <strong>Modo Vídeo Padrão</strong>.</li>
-                    <li><strong>Resolução:</strong> 4K a 30 FPS (cena estática/nitidez máxima) ou 1080p a 60 FPS (slow motion na edição).</li>
-                    <li><strong>Lente:</strong> sempre a <strong>Principal 1X</strong>. Evite a Ultra-wide e jamais use a Macro de 2 MP.</li>
-                </ul>
-            </div>
-
-            <div class="diagram">
-                <span class="diagram-label">Menu do Modo Pro</span>
-                ┌──────────────────────────────────────────────────────────┐
-                │ <span class="highlight">WB: 4800K</span>  │ Foco: [<span class="highlight2">|||||||||..</span>] (Peaking) │ <span class="highlight">ISO: 100</span>   │
-                ├──────────────────────────────────────────────────────────┤
-                │ [ <span class="highlight">LENTE PRINCIPAL 1X</span> ] - Evite a Ultra-wide / Macro      │
-                └──────────────────────────────────────────────────────────┘
-            </div>
-
-            <div class="config-grid">
-                <div class="config-item"><div class="value">MF</div><div class="label">Foco Manual</div></div>
-                <div class="config-item"><div class="value">50–100</div><div class="label">ISO Travado</div></div>
-                <div class="config-item"><div class="value">4800K</div><div class="label">Balanço de Brancos</div></div>
-                <div class="config-item"><div class="value">1X / 2X</div><div class="label">Zoom Digital Limpo</div></div>
-            </div>
-
-            <div class="warning">
-                <span class="icon">⚠️</span>
-                <div>
-                    <strong>Não use a lente Macro de 2 MP!</strong>
-                    <p>Ela tem baixíssima qualidade. No lugar dela, use a câmera principal (1X) com zoom digital de 2X. O sensor de 200 MP mantém nitidez excelente no crop e ainda entrega bokeh natural.</p>
-                </div>
-            </div>
-
-            <div class="tip">
-                <span class="icon">💡</span>
-                <p><strong>Focus Peaking:</strong> aquelas linhas vermelhas/azuis que aparecem na tela no modo Pro. Use-as para garantir que o rosto do action figure está 100% no foco antes de gravar.</p>
-            </div>
-        </section>
-
-        <!-- ── TAB 2: ÂNGULOS ── -->
-        <section class="tab-panel" id="angles">
-            <div class="panel-header">
-                <div class="panel-icon angles">📐</div>
-                <h2>2. Ângulos & Movimentos de Câmera</h2>
-            </div>
-
-            <!-- A) Low-Angle Shot -->
-            <div class="card">
-                <h3>🐛 A) Ângulo do Verme (Low-Angle Shot)</h3>
-                <p>Vire o Redmi <strong>de cabeça para baixo</strong> e encoste a lente no chão. Isso gera uma perspectiva gigantesca — como se a câmera fosse do tamanho do personagem. Incline ~30° para cima.</p>
-            </div>
-
-            <div class="diagram">
-                <span class="diagram-label">Low-Angle Setup</span>
-                           [ LUZ DA LUA / TETO ]
-                                    │
-                                    ▼
-                                 <span class="highlight">O</span>  ← Cabeça da figura
-                                /|\
-                                 │
-                                / \  ← Pés no nível do chão
-             ──────────────────────────────────────── (Chão)
-                 /
-                / [ <span class="highlight2">CÂMERA DO CELULAR</span> ]  (Inclinada ~30° para cima)
-               [o]
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🧊 Exemplo: Perspectiva de Gigante</h4>
-                    <p class="desc">O action figure parecerá uma criatura colossal de 20 metros no topo de um prédio.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="angle-giant-bts.jpg">
-                        <img src="angle-giant-bts.jpg" alt="Perspectiva de gigante - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="angle-giant-result.jpg">
-                        <img src="angle-giant-result.jpg" alt="Perspectiva de gigante - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-                <div class="img-row single">
-                    <div class="img-slot" data-src="low-angle-final.jpg">
-                        <img src="low-angle-final.jpg" alt="Resultado final - action figure no topo do prédio com céu dramático">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- B) Efeito Parallax -->
-            <div class="card">
-                <h3>🎥 B) Efeito Parallax (Profundidade Dinâmica)</h3>
-                <p>Coloque pequenos objetos no primeiro plano para gerar profundidade de campo. A OIS do Note 13 Pro é ótima para deslizar o celular suavemente na horizontal.</p>
-            </div>
-
-            <div class="diagram">
-                <span class="diagram-label">Parallax em Movimento</span>
-             [ FUNDO ESCURO ]      ─────▶ Move <span class="dim">devagar</span>
-
-                 [ <span class="highlight">FIGURA</span> ]        ─────▶ Move em velocidade média
-
-              ▲ [PEDRA NO CHÃO]    ─────▶ Move <span class="highlight2">rápido</span> na frente da lente!
-
-                 [ 📱 CÂMERA ]  ➔ ➔ ➔  (Deslize suave para o lado)
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🪨 Exemplo: Profundidade em Parallax</h4>
-                    <p class="desc">Elementos em camadas (frente, meio e fundo) gerando sensação 3D cinemática.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="parallax-bts.jpg">
-                        <img src="parallax-bts.jpg" alt="Parallax - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="parallax-result.jpg">
-                        <img src="parallax-result.jpg" alt="Parallax - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── TAB 3: ILUMINAÇÃO ── -->
-        <section class="tab-panel" id="lighting">
-            <div class="panel-header">
-                <div class="panel-icon light">💡</div>
-                <h2>3. Iluminação Cinematográfica</h2>
-            </div>
-
-            <!-- A) Rim Light -->
-            <div class="card">
-                <h3>🔦 A) Rim Light (Luz de Contorno) + Luz Principal</h3>
-                <p>A luz traseira cria silhueta clássica de animes e destaca bordas da pintura. O sensor lida bem com a dinâmica se o ISO estiver travado baixo.</p>
-            </div>
-
-            <div class="diagram">
-                <span class="diagram-label">Rim Light Setup</span>
-                           [ <span class="highlight2">LUZ DE CONTORNO</span> ] (Atrás/Lateral - Mais Forte)
-                                    \
-                                     \
-                        [ FUNDO ]    ( <span class="highlight">O</span> )  ← FIGURA
-                                      /|
-                                     / |
-                                    /  [ <span class="highlight">LUZ PRINCIPAL</span> ] (Frente/Suave - Lado Oposto)
-                                   /
-                             [ 📱 CÂMERA ]
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>✨ Exemplo: Separação de Borda Estilo Anime</h4>
-                    <p class="desc">Linha brilhante traçando ombros, cabelo e escultura da figura contra fundo escuro.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="rim-bts.jpg">
-                        <img src="rim-bts.jpg" alt="Rim light - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="rim-result.jpg">
-                        <img src="rim-result.jpg" alt="Rim light - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- B) Teal & Orange / Neon -->
-            <div class="card">
-                <h3>🎨 B) Esquema Neons / Contraste de Cores</h3>
-                <p>Use dois LEDs com cores opostas. O Redmi Note 13 Pro lida incrivelmente bem com saturação dessas luzes se a exposição estiver um pouco reduzida.</p>
-            </div>
-
-            <div class="diagram">
-                <span class="diagram-label">Complementary Colors</span>
-             (🔵 LUZ AZUL)  ===▶   [ <span class="highlight">FIGURA</span> ]   ◀===  (🔴 LUZ VERMELHA)
-                                        │
-                                 [ 📱 CÂMERA ]
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🌃 Exemplo: Estilo Cyberpunk / Neon Urban</h4>
-                    <p class="desc">Reflexos coloridos intensos sobre armadura ou roupas plásticas da figura.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="neon-bts.jpg">
-                        <img src="neon-bts.jpg" alt="Neon - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="neon-result.jpg">
-                        <img src="neon-result.jpg" alt="Neon - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── TAB 4: POSES ── -->
-        <section class="tab-panel" id="poses">
-            <div class="panel-header">
-                <div class="panel-icon pose">🎯</div>
-                <h2>4. Poses & Composição</h2>
-            </div>
-
-            <!-- A) Linha de Ação Diagonal -->
-            <div class="card">
-                <h3>📐 A) A Linha de Ação Diagonal</h3>
-                <p>Mantenha membros em ângulos cruzados para forçar o sensor a capturar perspectiva e relevo. Evite o "efeito maquete" da figura reta.</p>
-            </div>
-
-            <div class="compare-row">
-                <div class="compare-card bad">
-                    <div class="verdict">❌ ESTRUTURA RÍGIDA</div>
-                    <p style="font-family:monospace;font-size:0.85rem;">&nbsp;&nbsp;(O)<br>&nbsp;&nbsp;&nbsp;|<br>&nbsp;&nbsp;/&nbsp;\</p>
-                    <p style="font-size:0.8rem;color:var(--muted);">Achata a cena</p>
-                </div>
-                <div class="compare-card good">
-                    <div class="verdict">✅ ESTRUTURA DIAGONAL</div>
-                    <p style="font-family:monospace;font-size:0.85rem;">&nbsp;&nbsp;&nbsp;&nbsp;(O)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;\<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;\</p>
-                    <p style="font-size:0.8rem;color:var(--muted);">Dinâmica e cinematográfica</p>
-                </div>
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🦸 Exemplo: Aterrissagem de Impacto</h4>
-                    <p class="desc">Personagem agachado com corpo inclinado na diagonal, pronto para saltar.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="pose-diagonal-bts.jpg">
-                        <img src="pose-diagonal-bts.jpg" alt="Pose diagonal - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="pose-diagonal-result.jpg">
-                        <img src="pose-diagonal-result.jpg" alt="Pose diagonal - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- B) Escorço -->
-            <div class="card">
-                <h3>👊 B) Escorço (Foreshortening)</h3>
-                <p>Aponte o punho, espada ou poder do personagem <strong>direto para a lente</strong>. O algoritmo cria desfoque óptico natural no corpo, focando só no item da frente.</p>
-            </div>
-
-            <div class="diagram">
-                <span class="diagram-label">Foreshortening</span>
-                [ <span class="highlight">ESPADA / MÃO</span> ]  ← (<span class="highlight2">Muito perto da câmera = Enorme</span>)
-                      \
-                       \
-                        (<span class="dim">O</span>)       ← Cabeça menor ao fundo = Profundidade
-                        / \
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🗡️ Exemplo: Golpe de Espada em Direção à Tela</h4>
-                    <p class="desc">A ponta da espada gigantesca no primeiro plano com o personagem menor ao fundo.</p>
-                </div>
-                <div class="img-row">
-                    <div class="img-slot" data-src="foreshort-bts.jpg">
-                        <img src="foreshort-bts.jpg" alt="Foreshortening - foto 1">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                    <div class="img-slot" data-src="foreshort-result.jpg">
-                        <img src="foreshort-result.jpg" alt="Foreshortening - foto 2">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── TAB 5: EFEITOS ── -->
-        <section class="tab-panel" id="effects">
-            <div class="panel-header">
-                <div class="panel-icon effects">✨</div>
-                <h2>5. Efeitos Práticos (VFX Físicos)</h2>
-            </div>
-
-            <div class="card">
-                <h3>🧪 Partículas Reais no Ar</h3>
-                <p>O sensor do Redmi tem ótima nitidez em áreas iluminadas. Aproveite para criar efeitos reais sem pós-produção.</p>
-            </div>
-
-            <table class="fx-table">
-                <thead>
-                    <tr>
-                        <th class="emoji-col"></th><th>Efeito</th><th>Como Fazer</th><th>Resultado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="emoji-col">💨</td>
-                        <td><strong>Fumaça Volumétrica</strong></td>
-                        <td>Vaporizador, incenso ou vape soprado de lado</td>
-                        <td>Feixes de luz dramáticos no vídeo</td>
-                    </tr>
-                    <tr>
-                        <td class="emoji-col">✨</td>
-                        <td><strong>Partículas de Poeira</strong></td>
-                        <td>Amido de milho ou canela jogados perto da luz</td>
-                        <td>Pontos brancos reluzentes (efeito faísca)</td>
-                    </tr>
-                    <tr>
-                        <td class="emoji-col">🌬️</td>
-                        <td><strong>Vento de Batalha</strong></td>
-                        <td>Secador de cabelo no modo frio apontado na lateral</td>
-                        <td>Movimento fluido em tecidos e cabelos</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="tip">
-                <span class="icon">🔑</span>
-                <p><strong>Dica de ouro:</strong> sempre ilumine a fumaça/poeira com uma luz lateral. Sem iluminação dedicada, as partículas somem no escuro.</p>
-            </div>
-        </section>
-
-        <!-- ── TAB 6: EDIÇÃO ── -->
-        <section class="tab-panel" id="editing">
-            <div class="panel-header">
-                <div class="panel-icon edit">🎬</div>
-                <h2>6. Edição & Estrutura do Reels</h2>
-            </div>
-
-            <div class="card">
-                <h3>⏱️ Ritmo de Corte (Fluxo para Reels)</h3>
-                <p>Estruture seus vídeos com progressão de impacto. O segredo é <strong>variar a velocidade</strong>.</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-step hook">
-                    <div class="time">0.0s – 1.5s</div>
-                    <div class="step-title">🎣 HOOK</div>
-                    <div class="step-desc">Slow-mo + Bass drop. Impacto imediato.</div>
-                </div>
-                <div class="timeline-step">
-                    <div class="time">1.5s – 3.0s</div>
-                    <div class="step-title">📷 Take Aberto</div>
-                    <div class="step-desc">Pan rápido mostrando o cenário.</div>
-                </div>
-                <div class="timeline-step">
-                    <div class="time">3.0s – 5.0s</div>
-                    <div class="step-title">🔍 Close-up</div>
-                    <div class="step-desc">Detalhe com luz piscando.</div>
-                </div>
-                <div class="timeline-step climax">
-                    <div class="time">5.0s – 8.0s</div>
-                    <div class="step-title">⚡ Clímax</div>
-                    <div class="step-desc">Posição final épica no beat.</div>
-                </div>
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>👁️ Exemplo 1: Hook Inicial (0.0s – 1.5s)</h4>
-                    <p class="desc">Close-up extremo nos olhos ou detalhe iluminado do personagem piscando em luzes rápidas.</p>
-                </div>
-                <div class="img-row single">
-                    <div class="img-slot" data-src="punch-bts.jpg">
-                        <img src="punch-bts.jpg" alt="Hook inicial - close-up">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="example-card">
-                <div class="example-text">
-                    <h4>🎬 Exemplo 2: Revelação Épica do Clímax (5.0s – 8.0s)</h4>
-                    <p class="desc">Cena completa revelada com fumaça, luzes de contorno e enquadramento de pôster de filme.</p>
-                </div>
-                <div class="img-row single">
-                    <div class="img-slot" data-src="punch-result.jpg">
-                        <img src="punch-result.jpg" alt="Clímax - revelação épica">
-                        <span class="click-hint">🔍 Clique para ampliar</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>🎨 Color Grading</h3>
-                <ul>
-                    <li><strong>Contraste:</strong> +10</li>
-                    <li><strong>Sombras:</strong> -15 (esconde o fundo do ambiente)</li>
-                    <li><strong>Nitidez:</strong> +5 (realça texturas da pintura)</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>⚡ Speed Ramping</h3>
-                <p>Interpole partes rápidas a <strong>2x</strong> e diminua abruptamente para <strong>0.3x (Slow Motion)</strong> bem na batida da música ou no golpe do personagem. Esse contraste de velocidade é o que viraliza.</p>
-            </div>
-
-            <div class="tip">
-                <span class="icon">📱</span>
-                <p><strong>Exporte em:</strong> 1080p a 60 FPS para o Reels não comprimir demais. Se o projeto tiver slow-motion, 4K a 30 FPS como master também funciona bem no CapCut/Premiere/DaVinci.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        Guia Cinematográfico para Redmi Note 13 Pro · Criado para o nicho de Action Figures
-    </footer>
-
-    <script>
-        // Tab switching
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabPanels = document.querySelectorAll('.tab-panel');
-
-        tabButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.dataset.tab;
-                tabButtons.forEach(b => b.classList.remove('active'));
-                tabPanels.forEach(p => p.classList.remove('active'));
-                btn.classList.add('active');
-                const panel = document.getElementById(targetId);
-                if (panel) panel.classList.add('active');
-                document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                const activeBtn = document.querySelector('.tab-btn.active');
-                const allBtns = [...tabButtons];
-                const idx = allBtns.indexOf(activeBtn);
-                const next = e.key === 'ArrowRight'
-                    ? (idx + 1) % allBtns.length
-                    : (idx - 1 + allBtns.length) % allBtns.length;
-                allBtns[next].click();
-            }
-        });
-
-        // Lightbox
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
-
-        document.querySelectorAll('.img-slot').forEach(slot => {
-            slot.addEventListener('click', () => {
-                const src = slot.dataset.src;
-                if (src) {
-                    lightboxImg.src = src;
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-            setTimeout(() => { lightboxImg.src = ''; }, 300);
-        }
-
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
-        });
-    </script>
 </body>
 </html>
